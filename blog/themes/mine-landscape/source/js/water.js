@@ -23,6 +23,7 @@ $(".drabbit-outer").click(function(e) {
         }
     }, 20)
 })
+
 function createDrop(x) {
     var newDrop = $("<div class='water-drop'></div>")
     newDrop.css("left", x - 25)
@@ -32,3 +33,16 @@ function createDrop(x) {
         newDrop.remove()
     }, 2000)
 }
+
+// 监听滚动
+function checkForHeader() {
+    if ($(document).scrollTop() > ($(".nav-drabbit").offset().top + $(".nav-drabbit").height())) {
+        $("#header-inner").css("top", "0px")
+    } else {
+        $("#header-inner").css("top", "-60px")
+    }
+}
+checkForHeader()
+$(window).scroll(function(e){
+    checkForHeader()
+});

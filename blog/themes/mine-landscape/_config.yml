@@ -1,7 +1,8 @@
 # Header
 menu:
-  Home: /
-  Schedule: schedule
+  首页: /
+  日程表: schedule
+  独立主页: https://indienova.com/home/games 
 rss: /atom.xml
 
 # Content
