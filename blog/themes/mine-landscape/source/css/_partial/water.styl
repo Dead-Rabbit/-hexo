@@ -1,0 +1,73 @@
+.drabbit-water
+    position: fixed
+    width: 10px
+    height: 20px
+    z-index: 100
+    background-image: url("images/water_point1.png")
+    background-size: 100% 100%
+
+drop_width = 50px
+drop_height = 21px
+drop_bottom = 10.5px
+drop_left = 25px
+
+.water-drop
+  width: drop_width
+  height: drop_height
+  margin-left: -drop_left
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  position: absolute;
+  z-index: 101;
+
+.water-drop:after
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 0px;
+    height: 0px;
+    border: solid 4px #FFF;
+    border-radius: 50%;
+    opacity: 0;
+    animation: splash 2s ease infinite;
+
+@keyframes splash {
+  0% {
+    bottom: drop_bottom
+    left: drop_left
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+  }
+  0.001% {
+    opacity: 1;
+  }
+  22% {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    width: drop_width
+    height: drop_height
+  }
+  22.001% {
+    bottom: drop_bottom
+    left: drop_left
+    opacity: 1;
+    width: 0px;
+    height: 0px;
+  }
+  43% {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    width: drop_width
+    height: drop_height
+  }
+  43.001% {
+    opacity: 0;
+  }
+}
