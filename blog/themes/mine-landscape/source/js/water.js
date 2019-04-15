@@ -1,7 +1,12 @@
 $(".drabbit-outer").click(function(e) {
+    createOneRain(e.clientX - 5, e.clientY - 5)
+})
+
+// 创建雨滴
+function createOneRain(x, y) {
     var newWater = $("<a class='drabbit-water' ></a>")
-    newWater.css("left", e.clientX - 5)
-    newWater.css("top", e.clientY - 5)
+    newWater.css("left", x)
+    newWater.css("top", y)
     $(".drabbit-outer").append(newWater)
 
     // 一帧的移动距离
@@ -19,10 +24,9 @@ $(".drabbit-outer").click(function(e) {
 
             newWater.remove()
             clearInterval(newone)
-
         }
     }, 20)
-})
+}
 
 function createDrop(x) {
     var newDrop = $("<div class='water-drop'></div>")
@@ -46,3 +50,28 @@ checkForHeader()
 $(window).scroll(function(e){
     checkForHeader()
 });
+
+// 绑定raining按钮
+var ifRaining = false
+$(".drabbit-raining-a").mousedown(function(e){
+    $(this).css("top", "0px")
+})
+$(".drabbit-raining-a").mouseup(function(e){
+    $(this).css("top", ifRaining?"-60px":"-20px")
+    changeRaining()
+})
+var intForRain;
+function changeRaining() {
+    // 更改raining状态
+    ifRaining = !ifRaining
+    if (ifRaining) {
+        intForRain = setInterval(function() {
+            var rainLevel = Math.random() * 3
+            if (rainLevel <= 1) {
+                createOneRain(Math.random() * document.body.clientWidth, $(".drabbit-outer-fish-up").position().top - $(document).scrollTop() + 10)
+            }
+        }, 100)
+    } else {
+        clearInterval(intForRain)
+    }
+}
