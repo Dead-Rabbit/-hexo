@@ -34,7 +34,7 @@ op5=>operation: 屏幕映射
 
 op1(right)->op2(right)->op3(right)->op4(right)->op5
 ```
-#### 光栅化阶段 
+#### 光栅化阶段
 ```flow
 op1=>operation: 三角形设置
 op2=>operation: 三角形遍历

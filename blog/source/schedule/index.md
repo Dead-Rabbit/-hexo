@@ -1,12 +1,13 @@
 ---
 title: 日程表安排
-date: 2019-04-11 12:34:18
+date: 2077-01-01 00:00:01
 ---
 ***
 ### 安排列表
-- [ ] **编辑器开发**
-    - [ ] 新增Todo列表功能 [语法参考](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments)
-    - [ ] 改进 LaTex 功能
-        - [ ] 新增 LaTex 公式编号功能 [语法参考](http://docs.mathjax.org/en/latest/tex.html#tex-eq-numbers)
-- [ ] **最近推广**
+- [ ] **开发相关**
+    - [x] 敏捷开发
+- [ ] **锻炼身体相关**
     - [x] 测试
+
+### Pics
+![在家挺尸第一天](day1.jpg)
