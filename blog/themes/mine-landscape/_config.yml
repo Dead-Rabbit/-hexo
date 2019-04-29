@@ -1,8 +1,9 @@
-# Header
+﻿# Header
 menu:
   首页: /
   日程表: schedule
   书单: readlist
+  待解决疑惑: problems
   独立主页: https://deadrabbit.indienova.com/
 rss: /atom.xml
 
