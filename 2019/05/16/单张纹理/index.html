@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://dead-rabbit.github.io">
   <title>单张纹理 | 红黑兔子头</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="《Unity Shader 入门精要》学习记录在贴纹理的shader中，我们要在Cg代码片中为纹理类型的属性声明一个float4类型的变量 _MainTex_ST。在Unity中，使用 纹理名_ST的方式来生命某个纹理的属性。其中，ST是缩放和平移的缩写，_MainTex_ST可以让我们得到该纹理的缩放和平移值，_MainTex_ST.xy 是缩放,_MainTex_ST.zw是偏移值，我们可以在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单张纹理">
-<meta property="og:url" content="http://dead-rabbit.github.io/2019/05/16/单张纹理/index.html">
+<meta property="og:url" content="http://dead-rabbit.github.io/2019/05/16/%E5%8D%95%E5%BC%A0%E7%BA%B9%E7%90%86/index.html">
 <meta property="og:site_name" content="红黑兔子头">
 <meta property="og:description" content="《Unity Shader 入门精要》学习记录在贴纹理的shader中，我们要在Cg代码片中为纹理类型的属性声明一个float4类型的变量 _MainTex_ST。在Unity中，使用 纹理名_ST的方式来生命某个纹理的属性。其中，ST是缩放和平移的缩写，_MainTex_ST可以让我们得到该纹理的缩放和平移值，_MainTex_ST.xy 是缩放,_MainTex_ST.zw是偏移值，我们可以在">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-21T09:51:03.866Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-16T02:21:13.000Z">
+<meta property="article:modified_time" content="2020-08-21T09:51:03.866Z">
+<meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单张纹理">
-<meta name="twitter:description" content="《Unity Shader 入门精要》学习记录在贴纹理的shader中，我们要在Cg代码片中为纹理类型的属性声明一个float4类型的变量 _MainTex_ST。在Unity中，使用 纹理名_ST的方式来生命某个纹理的属性。其中，ST是缩放和平移的缩写，_MainTex_ST可以让我们得到该纹理的缩放和平移值，_MainTex_ST.xy 是缩放,_MainTex_ST.zw是偏移值，我们可以在">
   
     <link rel="alternative" href="/atom.xml" title="红黑兔子头" type="application/atom+xml">
   
@@ -36,8 +36,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.1.0"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -50,7 +50,7 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">死兔子。</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -59,7 +59,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -108,7 +108,7 @@
 				<img src="" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">死兔子。</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -139,7 +139,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -166,7 +166,7 @@
   
 
         
-        <a href="/2019/05/16/单张纹理/" class="archive-article-date">
+        <a href="/2019/05/16/%E5%8D%95%E5%BC%A0%E7%BA%B9%E7%90%86/" class="archive-article-date">
   	<time datetime="2019-05-16T02:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-16</time>
 </a>
         
@@ -178,7 +178,8 @@
 <hr>
 <p>在UnityShader入门精要这本书中的例子里，定义了从应用到顶点着色器中包含的 第一组纹理坐标， float4 texcoord : TEXCOORD0;  然后又定义了从顶点着色器到片元着色器中的变量 float2 uv : TEXCOORD2;以便在片元着色器中使用该坐标进行纹理采样<br>uv的计算是： uv = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;  其中，v.texcoord.xy 是当前顶点对应的纹理坐标？，然后使用 纹理的 _MainTex_ST.xy 对坐标进行缩放，然后再使用偏移属性 _MainTex_ST.zw对结果进行偏移。不过这个式子可以使用unity自带的 uv = TRANSFORM_TEX(v.texcoord, _MainTex_ST) 进行省略计算</p>
 <hr>
-<p>书中例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Shader &quot;Unity Shaders Book/Chapter 7/Siginle Texture&quot; &#123;</span><br><span class="line">  Properties &#123;</span><br><span class="line">    _Color (&quot;Color Tint&quot;, Color) = (1, 1, 1, 1)</span><br><span class="line">    _MainTex (&quot;Main Tex&quot;, 2D) = &quot;white&quot; &#123;&#125;</span><br><span class="line">    _Specular (&quot;Specular&quot;, Color) = (1, 1, 1, 1)</span><br><span class="line">    _Gloss (&quot;Gloss&quot;, Range(8.0, 256)) = 20</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>书中例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Shader &quot;Unity Shaders Book&#x2F;Chapter 7&#x2F;Siginle Texture&quot; &#123;</span><br><span class="line">  Properties &#123;</span><br><span class="line">    _Color (&quot;Color Tint&quot;, Color) &#x3D; (1, 1, 1, 1)</span><br><span class="line">    _MainTex (&quot;Main Tex&quot;, 2D) &#x3D; &quot;white&quot; &#123;&#125;</span><br><span class="line">    _Specular (&quot;Specular&quot;, Color) &#x3D; (1, 1, 1, 1)</span><br><span class="line">    _Gloss (&quot;Gloss&quot;, Range(8.0, 256)) &#x3D; 20</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -258,7 +259,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://dead-rabbit.github.io/2019/05/16/单张纹理/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://dead-rabbit.github.io/2019/05/16/%E5%8D%95%E5%BC%A0%E7%BA%B9%E7%90%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -272,8 +273,17 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/06/07/gpu%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          GPU流水线学习
+        
+      </div>
+    </a>
   
-    <a href="/2019/05/09/协程相关学习/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2019/05/09/%E5%8D%8F%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">协程相关学习</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -398,6 +408,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">着色器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">纹理</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

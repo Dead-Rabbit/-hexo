@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://dead-rabbit.github.io">
   <title>红黑兔子头</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,9 +12,9 @@
 <meta property="og:title" content="红黑兔子头">
 <meta property="og:url" content="http://dead-rabbit.github.io/index.html">
 <meta property="og:site_name" content="红黑兔子头">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="红黑兔子头">
   
     <link rel="alternative" href="/atom.xml" title="红黑兔子头" type="application/atom+xml">
   
@@ -32,8 +32,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.1.0"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -46,7 +46,7 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">死兔子。</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -55,7 +55,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -104,7 +104,7 @@
 				<img src="" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">死兔子。</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -135,7 +135,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -152,31 +152,32 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-单张纹理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-记录一个有意思的开关写法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/16/单张纹理/">单张纹理</a>
+      <a class="article-title" href="/2020/07/13/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3%E5%86%99%E6%B3%95/">记录一个有意思的“开关”写法</a>
     </h1>
   
 
         
-        <a href="/2019/05/16/单张纹理/" class="archive-article-date">
-  	<time datetime="2019-05-16T02:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-16</time>
+        <a href="/2020/07/13/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3%E5%86%99%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-07-13T12:24:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="《Unity-Shader-入门精要》学习记录"><a href="#《Unity-Shader-入门精要》学习记录" class="headerlink" title="《Unity Shader 入门精要》学习记录"></a>《Unity Shader 入门精要》学习记录</h3><p>在贴纹理的shader中，我们要在Cg代码片中为纹理类型的属性声明一个float4类型的变量 _MainTex_ST。<strong>在Unity中，使用 纹理名_ST的方式来生命某个纹理的属性。</strong><br>其中，ST是缩放和平移的缩写，_MainTex_ST可以让我们得到该纹理的缩放和平移值，_MainTex_ST.xy 是<strong>缩放</strong>,_MainTex_ST.zw是偏移值，我们可以在面板的纹理属性中调节</p>
-<hr>
-<p>在UnityShader入门精要这本书中的例子里，定义了从应用到顶点着色器中包含的 第一组纹理坐标， float4 texcoord : TEXCOORD0;  然后又定义了从顶点着色器到片元着色器中的变量 float2 uv : TEXCOORD2;以便在片元着色器中使用该坐标进行纹理采样<br>uv的计算是： uv = v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;  其中，v.texcoord.xy 是当前顶点对应的纹理坐标？，然后使用 纹理的 _MainTex_ST.xy 对坐标进行缩放，然后再使用偏移属性 _MainTex_ST.zw对结果进行偏移。不过这个式子可以使用unity自带的 uv = TRANSFORM_TEX(v.texcoord, _MainTex_ST) 进行省略计算</p>
-<hr>
-<p>书中例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Shader &quot;Unity Shaders Book/Chapter 7/Siginle Texture&quot; &#123;</span><br><span class="line">  Properties &#123;</span><br><span class="line">    _Color (&quot;Color Tint&quot;, Color) = (1, 1, 1, 1)</span><br><span class="line">    _MainTex (&quot;Main Tex&quot;, 2D) = &quot;white&quot; &#123;&#125;</span><br><span class="line">    _Specular (&quot;Specular&quot;, Color) = (1, 1, 1, 1)</span><br><span class="line">    _Gloss (&quot;Gloss&quot;, Range(8.0, 256)) = 20</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>逻辑如此：</p>
+<p>先设置一个开关，设置 是否检查当前物品突破 ifCheckBreak ，然后提供一个方法 GetIsBreak() 来判断物品是否突破</p>
+<p>现在需要把这两个检查放在一起，如果当前开启检查，则进行检查，如果关闭检查，则不进行检查</p>
+<p>可以这样写</p>
+<p>if not ifCheckBreak or item:GetIsBreak() then<br>    do some thing<br>end</p>
+<p>如果设置了checkBreak = true，则not ifCheckBreak返回false，应该取第二个值。</p>
 
       
 
@@ -186,10 +187,21 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/16/单张纹理/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/13/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3%E5%86%99%E6%B3%95/">展开全文 >></a>
         </p>
       
 
@@ -219,252 +231,139 @@
 
 
   
-    <article id="post-协程相关学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ecs-compnent-isystemstatecomponentdata" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/09/协程相关学习/">协程相关学习</a>
+      <a class="article-title" href="/2020/05/31/ecs-compnent-isystemstatecomponentdata/">ECS Compnent - ISystemStateComponentData</a>
     </h1>
   
 
         
-        <a href="/2019/05/09/协程相关学习/" class="archive-article-date">
-  	<time datetime="2019-05-09T03:12:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
+        <a href="/2020/05/31/ecs-compnent-isystemstatecomponentdata/" class="archive-article-date">
+  	<time datetime="2020-05-31T09:20:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>以下内容抄自：<a href="https://blog.csdn.net/jasonwang18/article/details/55519165" target="_blank" rel="noopener">Unity3d IEnumerator 协程的理解</a></p>
-<h4 id="协程是什么"><a href="#协程是什么" class="headerlink" title="协程是什么"></a>协程是什么</h4><p>从程序结构的角度来讲，协程是一个有限状态机，这样说可能并不是很明白，说到协程（Coroutine），我们还要提到另一样东西，那就是子例程（Subroutine），子例程一般可以指函数，函数是没有  状态 的，等到它return之后，它的所有局部变量就消失了，但是在协程中我们可以在  一个函数里多次返回， 局部变量被当作状态保存在协程函数中，知道最后一次return，协程的状态才别清除。 </p>
-<p>简单来说，协程就是：你可以写一段顺序的代码，然后标明哪里需要暂停，然后在下一帧或者一段时间后，系统会继续执行这段代码。</p>
-<h4 id="协程怎么用？"><a href="#协程怎么用？" class="headerlink" title="协程怎么用？"></a>协程怎么用？</h4><p>一个简单的C#代码，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">IEnumerator LongComputation()</span><br><span class="line">&#123;</span><br><span class="line">    while(someCondition)</span><br><span class="line">    &#123;</span><br><span class="line">        /* 做一系列的工作 */</span><br><span class="line"> </span><br><span class="line">        // 在这里暂停然后在下一帧继续执行</span><br><span class="line">        yield return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="协程是怎么工作的"><a href="#协程是怎么工作的" class="headerlink" title="协程是怎么工作的"></a>协程是怎么工作的</h4><p>注意上边的代码示例，你会发现一个协程函数的返回值是<strong>IEnumerator，它是一个迭代器，你可以把它当成指向一个序列的某个节点的指针 </strong>。它提供了两个重要的接口，分别是<strong>Current（返回当前指向的元素）和MoveNext()（将指针向前移动一个单位，如果移动成功，则返回true）</strong>。</p>
-<p>通常，如果你想实现一个接口，你可以写一个类，实现成员，等等。  迭代器块（iterator block） 是一个方便的方式实现IEnumerator没有任何麻烦-你只是遵循一些规则，并实现IEnumerator由编译器自动生成。 </p>
-<h5 id="一个迭代器块具备如下特征："><a href="#一个迭代器块具备如下特征：" class="headerlink" title="一个迭代器块具备如下特征："></a>一个迭代器块具备如下特征：</h5><ol>
-<li>返回IEnumerator</li>
-<li>使用yield关键字</li>
-</ol>
-<p>所以yield关键词是干啥的？<strong>它声明序列中的下一个值或者是一个无意义的值。如果使用yield x（x是指一个具体的对象或数值）的话，那么movenext返回为true并且current被赋值为x，如果使用yield break使得movenext()返回false</strong>。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/09/协程相关学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-任务系统相关学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/08/任务系统相关学习/">任务系统相关学习</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/08/任务系统相关学习/" class="archive-article-date">
-  	<time datetime="2019-05-08T02:47:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考链接：</p>
+        <p><a target="_blank" rel="noopener" href="https://docs.unity3d.com/Packages/com.unity.entities@0.11/manual/system_state_components.html">System State Components</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AndrewFan/article/details/90479748">ECS框架文档翻译六 System State Components_Andrew的游戏世界-CSDN博客</a></p>
+<p><strong><code>系统状态组件</code></strong> 的行为类似于普通组件或共享组件，但在销毁实体时，EntityManager不会删除任何系统状态组件，也不会回收实体ID，直到系统状态组件被删除。 这种行为差异允许系统在销毁实体时清理其内部状态或释放资源。</p>
+<p><strong>当实体被销毁时，SystemStateComponentData不会被立刻销毁</strong></p>
 <ol>
-<li><a href="https://blog.csdn.net/beihuanlihe130/article/details/76098844" target="_blank" rel="noopener">Unity中协程(IEnumerator)的使用方法介绍</a></li>
-<li><a href="https://blog.csdn.net/u011397120/article/details/61236055" target="_blank" rel="noopener">Unity3D-协程的介绍和使用</a></li>
-<li><a href="https://www.jianshu.com/p/ec91e21cd419" target="_blank" rel="noopener"> Unity3D 中的System.EventHandler使用详解 </a></li>
-<li><a href="https://blog.51cto.com/jxwgame/1602630" target="_blank" rel="noopener">Unity中任务系统书写</a></li>
-<li><a href="https://www.cnblogs.com/binpan/p/4290515.html" target="_blank" rel="noopener">Unity3D 任务系统设计</a> <strong>继承自4</strong></li>
+<li>查找引用此实体ID的所有组件</li>
+<li>删除这些组件</li>
+<li>回收实体ID以供重新使用 然而，与实体ID关联的组件中，如果存在SystemStateComponentData，则不会立刻将此实体删除。这将使得系统（System）有机会来删除与实体ID相关联的资源或状态。只有在删除所有SystemStateComponentData后，此实体ID才会得到重用。</li>
 </ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/08/任务系统相关学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ScriptableObject学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/06/ScriptableObject学习/">ScriptableObject学习</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/06/ScriptableObject学习/" class="archive-article-date">
-  	<time datetime="2019-05-06T08:16:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.youtube.com/watch?v=0nW5PhQTWbQ" target="_blank" rel="noopener">【阿空】Unity的可編程物件：ScriptableObject！操作视频</a><br>简单应用视频，看完之后，大体了解了ScriptableObject可以帮助我们实现数据的存储，而不是自己写xml+xml解释器等东西，相对来说很方便，且其中的[CreateAssetMenu]可以帮助我们很方便的创建数据。</p>
-<hr>
-<p><a href="https://blog.csdn.net/candycat1992/article/details/52181814" target="_blank" rel="noopener">【Unity】ScriptableObject的介绍 - 冯乐乐博客</a><br>看了前小部分，突然明白为什么ScriptableObject可以实现直接存储数据了，如果一个脚本引用了ScriptableObject，那它是会随着使用者的更改而永久更改，就不会出现“结束一次运行，期间调整的内容恢复到原状态”这种情况了。</p>
-<hr>
-<p>其他内容<br><a href="https://kendevlog.wordpress.com/2017/12/04/unity%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%989-%E6%9B%B4%E5%A4%9Ascriptableobject%E7%9A%84%E5%A6%99%E7%94%A8/" target="_blank" rel="noopener">Unity學習筆記#9 :更多ScriptableObject的妙用</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/06/ScriptableObject学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-理解顶点着色器与片元着色器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/05/理解顶点着色器与片元着色器/">理解顶点着色器与片元着色器</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/05/理解顶点着色器与片元着色器/" class="archive-article-date">
-  	<time datetime="2019-05-05T08:12:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以下内容来自<strong>《Unity Shader入门精要》</strong><br>作为shader编程的核心，需要重点复习一下。要理解这两个着色器，还要从GPU的渲染说起。</p>
-<blockquote>
-<p><img src="/2019/05/05/理解顶点着色器与片元着色器/GPUliucheng.png" alt="GPU渲染流程"></p>
-</blockquote>
-<hr>
-<h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><h4 id="1-顶点着色器-Vertex"><a href="#1-顶点着色器-Vertex" class="headerlink" title="1. 顶点着色器 Vertex"></a>1. 顶点着色器 Vertex</h4><p>顶点着色器的输入来自CPU，本身不可以创建或者销毁任何顶点，而且<strong>无法得到定点与顶点之间的关系</strong>，例如我们无法知道两个顶点是否属于同一个三角网络。但正是因为这样的相互独立性，GPU可以利用本身的特性<strong>并行化处理每一个顶点</strong>，这意味着这一阶段的处理速度会很快。<br>顶点着色器主要完成的工作有：坐标变换和驻点光照</p>
+<h2 id="Example-system-using-state-components"><a href="#Example-system-using-state-components" class="headerlink" title="Example system using state components"></a>Example system using state components</h2><p>The following example shows a simplified system that illustrates（说明了） how to manage entities with system state components. The example defines a <code>general-purpose IComponentData instance</code> and a system state, <code>ISystemStateComponentData</code> instance. It also defines three queries based on those entities:</p>
 <ul>
-<li><strong>坐标变换</strong><br>对顶点的坐标进行某种变换。顶点着色器可以在这一步中<strong>修改顶点的位置</strong>。相应的例子，我们可以通过改变顶点位置来模拟水面、布料等。还有一个重要的坐标变换的目标，就是<strong>把顶点坐标从模型空间转换到齐次裁剪空间</strong>。<br>类似 o.pos = mul(UNITY_MVP, v.position); 这样的代码，就是把顶点坐标从模型空间转到齐次裁剪空间，其中的UNITY_MVP使用的应该是MVP矩阵。</li>
-<li><strong>逐顶点光照（书中未介绍）</strong></li>
+<li><code>m_newEntities</code> selects entities that have the general-purpose, but not the system state component（挑选那些有***general-purpose***但不包含***系统状态组件***的Entities）. This query finds new entities that the system has not seen before. <strong>The system runs a job using the new entities query that adds the system state component</strong>.</li>
+<li><code>m_activeEntities</code> selects entities that have both the general-purpose and the system state component（挑选那些既有***general-purpose***和***系统状态组件***的Entities）. In a real application, other systems might be the ones that process or destroy the entities.</li>
+<li><code>m_destroyedEntities</code> selects entities that have the system state, but not the general-purpose component. Since the system state component is never added to an entity by itself, the entities that this query selects must have been deleted, either by this system or another system. The system reuses the destroyed entities query to run a job and remove the system state component from the entities, which allows the ECS code to recycle the entity identifier.</li>
 </ul>
-<h4 id="2-裁剪"><a href="#2-裁剪" class="headerlink" title="2. 裁剪"></a>2. 裁剪</h4><h4 id="3-屏幕映射"><a href="#3-屏幕映射" class="headerlink" title="3. 屏幕映射"></a>3. 屏幕映射</h4><h4 id="4-三角形设置"><a href="#4-三角形设置" class="headerlink" title="4. 三角形设置"></a>4. 三角形设置</h4><p>光栅阶段开始接收到的是 三角网格的顶点，即我们得到的是三角网格每条边的两个端点。通过“三角形设置”我们可以获得整个三角网格每条边上的像素坐标。它的输出是为了给下一个阶段做准备。</p>
-<h4 id="5-三角形遍历"><a href="#5-三角形遍历" class="headerlink" title="5. 三角形遍历"></a>5. 三角形遍历</h4><p>根据几何阶段输出的定点信息，最终得到该三角网格覆盖的像素位置。对应像素会生成一个片元，而片元中的状态是对3个顶点的信息进行<strong>插值</strong>得到的。<br>这一步的输出就是得到一个片元序列，其内容包括但不限于它的<strong>屏幕坐标、深度信息，以及其他从几何阶段输出的定点信息，例如法线、纹理坐标等</strong></p>
-<h4 id="6-片元着色器-Fragment"><a href="#6-片元着色器-Fragment" class="headerlink" title="6. 片元着色器 Fragment"></a>6. 片元着色器 Fragment</h4><p>片元着色器（像素着色器）的输入时上一个阶段对定点信息插值得到的结果，更具体来说，时根据那些从<strong>顶点着色器中输出的数据插值（三角形遍历）</strong>得到的。<br>在这一个阶段中可以完成很多重要的渲染技术，其中最重要的技术之一是<strong>纹理采样</strong>。为了在片元着色器中进行纹理采样，我们通常会在顶点着色器阶段输出每个顶点对应的纹理坐标，然后经过光栅化阶段对三角网格的三个顶点对应的纹理坐标进行插值候，就可以得到其覆盖的片元的纹理坐标了</p>
-<h4 id="7-逐片元操作"><a href="#7-逐片元操作" class="headerlink" title="7. 逐片元操作"></a>7. 逐片元操作</h4><p>当前阶段主要为对各种片元进行“测试”，书中介绍的是模板测试和深度测试，最后来一个混合。当前阶段是<strong>高度可配置性</strong>的，注意这个和可编程不同，是开发者设置测试阈值</p>
-<hr>
-<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><h4 id="1-顶点着色器和片元着色器的通信"><a href="#1-顶点着色器和片元着色器的通信" class="headerlink" title="1. 顶点着色器和片元着色器的通信"></a>1. 顶点着色器和片元着色器的通信</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="string">"Unity Shaders Book/Chapter 5/Simple Shader"</span> &#123;</span><br><span class="line">  SubShader &#123;</span><br><span class="line">    Pass &#123;</span><br><span class="line">      CGPROGRAM</span><br><span class="line"></span><br><span class="line">      #pragma vertex vert</span><br><span class="line">      #pragma fragment frag</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 从把数据从应用阶段传递到顶点着色器</span></span><br><span class="line">      struct a2v &#123;</span><br><span class="line">        flaot4 vertex : POSITION;</span><br><span class="line">        float3 normal : NORMAL;</span><br><span class="line">        flaot4 texcoord : TEXCOORD0;</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 使用一个结构体来定义顶点着色器的输出，并作为片元着色器的输入</span></span><br><span class="line">      struct v2f &#123;</span><br><span class="line">        <span class="comment">// SV_POSITION代表了顶点在裁剪空间中的位置信息</span></span><br><span class="line">        float4 pos : SV_POSITION;</span><br><span class="line">        <span class="comment">// COLOR用于存储颜色信息</span></span><br><span class="line">        fixed3 color : COLOR0;</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      v2f vert(a2v v) &#123;</span><br><span class="line">        v2f o;</span><br><span class="line">        o.pos = mul(UNITY_MATRIX_MVP, v.vertex);</span><br><span class="line">        <span class="comment">// v.normal 包含了顶点的法线向量，范围在[-1, 1]之间</span></span><br><span class="line">        <span class="comment">// 下面代码把分量范围映射到了[0, 1.0]</span></span><br><span class="line">        <span class="comment">// 存储到o.color 传递给片元着色器</span></span><br><span class="line">        o.color = v.normal * <span class="number">0.5</span> + fixed3(<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>);</span><br><span class="line">        <span class="keyword">return</span> o</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 输入是把顶点着色器的输出进行插值后得到的结果</span></span><br><span class="line">      fixed4 frag(v2f i) : SV_Target &#123;</span><br><span class="line">        <span class="comment">// 将插值候的 i.color 显示到屏幕上</span></span><br><span class="line">        <span class="keyword">return</span> fixed4(i.color, <span class="number">1.0</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      ENDCG</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This simplified example does not maintain any state within the system. One purpose for system state components is to track when persistent resources need to be allocated or cleaned up.（这个简单的例子不维护系统内的任何状态。系统状态组件的一个目的是追踪需要<code>分配</code>或<code>清理</code>的资源）</p>
+<p>using Unity.Collections;<br>using Unity.Entities;<br>using Unity.Jobs;<br>using UnityEngine;</p>
+<p>public struct GeneralPurposeComponentA : IComponentData<br>{<br>    public bool IsAlive;<br>}</p>
+<p>public struct StateComponentB : ISystemStateComponentData<br>{<br>    public int State;<br>}</p>
+<p>public class StatefulSystem : JobComponentSystem<br>{<br>    private EntityQuery m_newEntities;<br>    private EntityQuery m_activeEntities;<br>    private EntityQuery m_destroyedEntities;<br>    private EntityCommandBufferSystem m_ECBSource;</p>
+<pre><code>protected override void OnCreate()
+&#123;
+    // Entities with GeneralPurposeComponentA but not StateComponentB
+    m\_newEntities = GetEntityQuery(new EntityQueryDesc()
+    &#123;
+        All = new ComponentType\[\] &#123;ComponentType.ReadOnly&lt;GeneralPurposeComponentA&gt;()&#125;,
+        None = new ComponentType\[\] &#123;ComponentType.ReadWrite&lt;StateComponentB&gt;()&#125;
+    &#125;);
+
+    // Entities with both GeneralPurposeComponentA and StateComponentB
+    m\_activeEntities = GetEntityQuery(new EntityQueryDesc()
+    &#123;
+        All = new ComponentType\[\]
+        &#123;
+            ComponentType.ReadWrite&lt;GeneralPurposeComponentA&gt;(),
+            ComponentType.ReadOnly&lt;StateComponentB&gt;()
+        &#125;
+    &#125;);
+
+    // Entities with StateComponentB but not GeneralPurposeComponentA
+    m\_destroyedEntities = GetEntityQuery(new EntityQueryDesc()
+    &#123;
+        All = new ComponentType\[\] &#123;ComponentType.ReadWrite&lt;StateComponentB&gt;()&#125;,
+        None = new ComponentType\[\] &#123;ComponentType.ReadOnly&lt;GeneralPurposeComponentA&gt;()&#125;
+    &#125;);
+
+    m\_ECBSource = World.GetOrCreateSystem&lt;EndSimulationEntityCommandBufferSystem&gt;();
+&#125;</code></pre>
+<p>#pragma warning disable 618<br>    struct NewEntityJob : IJobForEachWithEntity<GeneralPurposeComponentA><br>    {<br>        public EntityCommandBuffer.Concurrent ConcurrentECB;</p>
+<pre><code>    public void Execute(Entity entity, int jobIndex, \[ReadOnly\] ref GeneralPurposeComponentA gpA)
+    &#123;
+        // Add an ISystemStateComponentData instance
+        ConcurrentECB.AddComponent&lt;StateComponentB&gt;(jobIndex, entity, new StateComponentB() &#123;State = 1&#125;);
+    &#125;
+&#125;
+
+struct ProcessEntityJob : IJobForEachWithEntity&lt;GeneralPurposeComponentA&gt;
+&#123;
+    public EntityCommandBuffer.Concurrent ConcurrentECB;
+
+    public void Execute(Entity entity, int jobIndex, ref GeneralPurposeComponentA gpA)
+    &#123;
+        // Process entity, possibly setting IsAlive false --
+        // In which case, destroy the entity
+        if (!gpA.IsAlive)
+        &#123;
+            ConcurrentECB.DestroyEntity(jobIndex, entity);
+        &#125;
+    &#125;
+&#125;
+
+struct CleanupEntityJob : IJobForEachWithEntity&lt;StateComponentB&gt;
+&#123;
+    public EntityCommandBuffer.Concurrent ConcurrentECB;
+
+    public void Execute(Entity entity, int jobIndex, \[ReadOnly\] ref StateComponentB state)
+    &#123;
+        // This system is responsible for removing any ISystemStateComponentData instances it adds
+        // Otherwise, the entity is never truly destroyed.
+        ConcurrentECB.RemoveComponent&lt;StateComponentB&gt;(jobIndex, entity);
+    &#125;
+&#125;</code></pre>
+<p>#pragma warning restore 618</p>
+<pre><code>protected override JobHandle OnUpdate(JobHandle inputDependencies)
+&#123;
+    var newEntityJob = new NewEntityJob()
+    &#123;
+        ConcurrentECB = m\_ECBSource.CreateCommandBuffer().ToConcurrent()
+    &#125;;
+    var newJobHandle = newEntityJob.ScheduleSingle(m\_newEntities, inputDependencies);
+    m\_ECBSource.AddJobHandleForProducer(newJobHandle);
+
+    var processEntityJob = new ProcessEntityJob()
+    &#123;ConcurrentECB = m\_ECBSource.CreateCommandBuffer().ToConcurrent()&#125;;
+    var processJobHandle = processEntityJob.Schedule(m\_activeEntities, newJobHandle);
+    m\_ECBSource.AddJobHandleForProducer(processJobHandle);
+
+    var cleanupEntityJob = new CleanupEntityJob()
+    &#123;
+        ConcurrentECB = m\_ECBSource.CreateCommandBuffer().ToConcurrent()
+    &#125;;
+    var cleanupJobHandle = cleanupEntityJob.ScheduleSingle(m\_destroyedEntities, processJobHandle);
+    m\_ECBSource.AddJobHandleForProducer(cleanupJobHandle);
+
+    return cleanupJobHandle;
+&#125;
+
+protected override void OnDestroy()
+&#123;
+    // Implement OnDestroy to cleanup any resources allocated by this system.
+    // (This simplified example does not allocate any resources.)
+&#125;</code></pre>
+<p>}</p>
 
       
 
@@ -474,10 +373,21 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/05/理解顶点着色器与片元着色器/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/31/ecs-compnent-isystemstatecomponentdata/">展开全文 >></a>
         </p>
       
 
@@ -507,34 +417,644 @@
 
 
   
-    <article id="post-渲染相关学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-《守望先锋》架构设计与网络同步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/01/渲染相关学习/">渲染相关学习</a>
+      <a class="article-title" href="/2020/05/11/%E3%80%8A%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B%E3%80%8B%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%90%8C%E6%AD%A5/">《守望先锋》架构设计与网络同步</a>
     </h1>
   
 
         
-        <a href="/2019/05/01/渲染相关学习/" class="archive-article-date">
-  	<time datetime="2019-05-01T06:35:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-01</time>
+        <a href="/2020/05/11/%E3%80%8A%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B%E3%80%8B%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%90%8C%E6%AD%A5/" class="archive-article-date">
+  	<time datetime="2020-05-11T11:24:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本节内容来自 <a href="https://zhuanlan.zhihu.com/p/25595069" target="_blank" rel="noopener">卡通渲染（上）：致从没看懂过着色器代码的你</a></p>
-<h4 id="关于如何进行光照计算"><a href="#关于如何进行光照计算" class="headerlink" title="关于如何进行光照计算"></a>关于如何进行光照计算</h4><p>在明白了这点之后，我们就能够理解如何进行光照计算了。</p>
+        <p>在GDC2017【Overwatch Gameplay Architecture andNetcode 】的分享会上，来自暴雪的Tim Ford介绍了《守望先锋》游戏架构和网络同步的设计。一起来看看吧。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image001.1497422620.png"></p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image002.1497422620.png"></p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image003.1497422620.png"></p>
+<p>          哈喽，大家好，这次的分享是关于《守望先锋》（译注：下文统一简称为Overwatch）游戏架构设计和网络部分。老规矩，手机调成静音；离开时记得填写调查问卷；换下半藏，赶紧推车！（众笑）</p>
+<p>          我是Tim Ford，是暴雪公司Overwatch开发团队老大。自从2013年夏季项目启动以来就在这个团队了。在那之前，我在《Titan》项目组，不过这次分享跟Titan没有半毛钱关系。（众笑）</p>
+<p>          这次分享的一些技术，是用来降低不停增长的代码库的复杂度（译注，代码复杂度的概念需要读者自行查阅）。为了达到这个目的我们遵循了一套严谨的架构。最后会通过讨论网络同步（netcode）这个本质很复杂的问题，来说明具体如何管理复杂性。</p>
+<p>          Overwatch是一个近未来世界观的在线团队英雄射击游戏，它的主要是特点是英雄的多样性， 每个英雄都有自己的独门绝技。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image004.1497422620.png"></p>
+<p>Overwatch使用了一个叫做“实体组件系统”的架构，接下来我会简称它为ECS。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image005.1497422620.png"></p>
+<p>          ECS不同于一些现成引擎中很流行的那种组件模型，而且与90年代后期到21世纪早期的经典Actor模式区别更大。我们团队对这些架构都有多年的经验，所以我们选择用ECS有点是“这山望着那山高”的意味。不过我们事先制作了一个原型，所以这个决定并不是一时冲动。</p>
+<p>开发了3年多以后，我们才发现，原来ECS架构可以管理快速增长的代码复杂性。虽然我很乐意分享ECS的优点，但是要知道，我今天所讲的一切其实都是事后诸葛亮 。</p>
+<p><strong>ECS**</strong>架构概述**</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170616/phpTKEUnE.1497607106.png"></p>
+<p>          ECS架构看起来就是这样子的。先有个World，它是<strong>系统</strong>（译注，这里的系统指的是ECS中的S，不是一般意义上的系统，为了方便阅读，下文统称System）和<strong>实体</strong>(Entity)的集合。而实体就是一个ID，这个ID对应了<strong>组件</strong>(Component)的集合。组件用来存储游戏状态并且没有任何的行为(Behavior)。System有行为但是没有状态。</p>
+<p>这听起来可能挺让人惊讶的，因为组件没有函数而System没有任何字段。</p>
+<p><strong>ECS**</strong>引擎用到的System和组件**</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170616/phpmXEqB6.1497607139.png"></p>
+<p>          图的左手边是<strong>以轮询顺序排列的System列表</strong>，右边是不同实体拥有的组件。在左边选择不同的System以后，就像弹钢琴一样，所有对应的组件会在右边高亮显示，我们管这叫<strong>组件元组</strong>（译注，元组tuple，从后文来看，主要作用就是可以调用Sibling函数来获取同一个元组内的组件，有点<strong>虚拟分组</strong>的意思）。</p>
+<p>System遍历检查所有元组，并在其状态（State）上执行一些操作（也就是行为Behavior）。记住组件不包含任何函数，它的状态都是裸存储的。</p>
+<p>          绝大多数的<strong>重要System都关注了不止一个组件</strong>，如你所见，这里的Transform组件就被很多System用到。</p>
+<p><strong>来自原型引擎里的一个System轮询(tick)的例子</strong></p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image008.1497422621.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">struck PhysicsTuple</span><br><span class="line">&#123;</span><br><span class="line">    DynamicPhysicsComponent* m_dynamicPhysics;</span><br><span class="line">    TransformComponent* m_transform;</span><br><span class="line">    ContactListComponent* m_contacts;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">void PhysicsSystem::Tick(f32 timeStep)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 取得处理物理碰撞的System</span><br><span class="line">    IPhysicsWorld* pw &#x3D; GetPhysicsWorld();</span><br><span class="line">    pw-&gt;Update(timeStep);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; Write Transforms of dynamic physics objects</span><br><span class="line">    &#x2F;&#x2F; 取得物理碰撞相关的元组内容</span><br><span class="line">    for (PysicsTuple&amp; t : GetPhysicsTuples())</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F; 用DynamicPhysicsComponent组件里保存的proxy来取到底层的物理表示</span><br><span class="line">        &#x2F;&#x2F; 并把它复制给Transform组件和Contact组件</span><br><span class="line">        IPhysicsProxy* proxy &#x3D; pw-&gt;GetProxy(t.m_dynamicPhysics-&gt;m_proxy);</span><br><span class="line">        </span><br><span class="line">        CopyTransform(t.m_transform, proxy);</span><br><span class="line">        CopyContacts(t.m_contacts, proxy);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 这个是物理System的轮询函数，非常直截了当，就是一个内部物理引擎的定时更新。物理引擎可能是Box2d或者是Domino（暴雪自有物理引擎）。执行完物理世界的模拟以后，就遍历元组集合。用DynamicPhysicsComponent组件里保存的proxy来取到底层的物理表示，并把它复制给Transform组件和Contact组件（译注：碰撞组件，后文会大量用到）。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170616/phpqRgSEy.1497607188.png"></p>
+<p>System不知道实体到底是什么，它只关心组件集合的小切片(slice，译注：可以理解为特定子集合)，然后在这个切片上执行一组行为。有些实体有多达30个组件，而有些只有2、3个，System不关心数量，它只关心执行操作行为的组件的子集。</p>
+<p>像这个原型引擎里的例子，（指着上图7中）这个是玩家角色实体，可以做出很多很酷的行为，右边这些是玩家能够发射的子弹实体。</p>
+<p>每个System在运行时，不知道也不关心这些实体是什么，它们只是在实体相关组件的子集上执行操作而已。</p>
+<p><strong>Overwatch**</strong>里的(ECS架构的)实现，就是这样子的。**</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170616/phpvqSxgf.1497607188.png"></p>
+<p><strong>EntityAdmin是个World，存储了一个所有System的集合，和一个所有实体的哈希表。表键是实体的ID</strong>。ID是个32位无符号整形数，用来在实体管理器（Entity Array）上唯一标识这个实体。另一方面，每个实体也都存了这个实体ID和资源句柄（resource handle），后者是个可选字段，指向了实体对应的Asset资源（译注：这需要依赖暴雪的另一套专门的Asset管理系统），资源定义了实体。</p>
+<p>组件Component是个基类，有几百个子类。每个子类组件都含有在System上执行Behavior时所需的成员变量。在这里多态唯一的用处就是重载Create和析构（Destructor）之类的生命周期管理函数。而其他能被继承组件类实例直接使用的，就只有一些用来方便地访问内部状态的helper函数了。但这些helper函数不是行为(译注：这里强调是为了遵循前面提到的原则：组件没有行为)，只是简单的访问器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">void EntityAdmin::Update(f32 timeStep)</span><br><span class="line">&#123;</span><br><span class="line">	for (System s : m_systems)</span><br><span class="line">	&#123;</span><br><span class="line">		s-&gt;Update(timeStep);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">void SomeSystem::Update(f32 timeStep) override</span><br><span class="line">&#123;</span><br><span class="line">	for (DerpComponent* d: ComponentItr&lt;DerpComponent&gt;(m_admin))</span><br><span class="line">	&#123;</span><br><span class="line">		d-&gt;m_timeAccu +&#x3D; timeStep;</span><br><span class="line">		if (d-&gt;m_timeAccu &gt; d-m_timeToHerp)</span><br><span class="line">		&#123;</span><br><span class="line">			this-&gt;HerpYourDerp(d, d-&gt;Sibling&lt;HerpComponent&gt;());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>EntityAdmin的结尾部分会调用所有System的Update。每个System都会做一些工作。上图9就是我们的使用方式，<strong>我们没有在固定的元组组件集合上执行操作，而是选择了一些基础组件来遍历</strong>，然后再由相应的行为去调用其他兄弟组件。所以你可以看到这里的操作只针对那些含有Derp和Herp组件的实体的元组执行。</p>
+<p><strong>Overwatch**</strong>客户端的System和组件列表**</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image012.1497422621.png"></p>
+<p>          这里有大概46不同的System和103个组件。这一页的炫酷动画是用来吸引你们看的（众笑）。</p>
+<p><strong>然后是服务器</strong></p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image013.1497422621.png"></p>
+<p>你可以看到有些System执行需要很多组件，而有些System仅仅需要几个。理想情况下，我们尽量确保每个System都依赖很多组件去运行。把他们当成纯函数(译注，pure function，无副作用的函数)，而不改变（mutating）它们的状态，就可以做到这一点。我们的确有少量的System需要改变组件状态，这种情况下它们必须自己管理复杂性。</p>
+<p><strong>下面是个真实的System代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">void PlayerConnectionSyste::Update(f32 timeStep) </span><br><span class="line">&#123;</span><br><span class="line">    for (ConnectionComponent* c: ComponentItr&lt;ConnectionComponent&gt;(m_admin))</span><br><span class="line">    &#123;</span><br><span class="line">        InputStreamComponent* is &#x3D; c-&gt;Sibling&lt;InputStreamComponent&gt;();</span><br><span class="line">        StatsComponent* stats &#x3D; c-&gt;Sibling&lt;StatsComponent&gt;();</span><br><span class="line">        </span><br><span class="line">        if (is-&gt;m_inputThisFrame || stats-&gt;m_didSomethingCoolLately)</span><br><span class="line">        &#123;</span><br><span class="line">            c-&gt;m_afkTimer &#x3D; 0.0f;</span><br><span class="line">            c-&gt;m_sentAFKMessage &#x3D; false;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            c-&gt;m_afkTimer +&#x3D; timeStep;</span><br><span class="line">            if (!c-&gt;m_sentAFKMessage &amp;&amp; c-&gt;m_afkTimer &gt; AFK_MESSAGE_SECONDS)</span><br><span class="line">            &#123;</span><br><span class="line">                c-&gt;m_sentAFKMessage &#x3D; true;</span><br><span class="line">                ConnectionUtil::SendMessage(c-&gt;m_connectionHandle, &quot;Move scrub!&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>          这个System是用来管理玩家连接的，它负责我们所有游戏服务器上的强制下线（译注，AFK, Away From Keyboard，表示长时间没操作而被认为离线）功能。</p>
+<p>这个System遍历所有的Connection组件（译注：这里不太合适直接翻译成“连接”），Connection组件用来管理服务器上的玩家网络连接，是挂在代表玩家的实体上的。它可以是正在进行比赛的玩家、观战者或者其他玩家控制的角色。System不知道也不关心这些细节，它的职责就是强制下线。</p>
+<p>          每一个Connection组件的元组包含了输入流(InputStream)和Stats组件（译注：看起来是用来统计战斗信息的）。我们从输入流组件读入你的操作，来确保你必须做点什么事情，例如键盘按键；并从Stats组件读取你在某种程度上对游戏的贡献。</p>
+<p>你只要做这些操作就会不停重置AFK定时器，否则的话，我们就会通过存储在Connection组件上的网络连接句柄发消息给你的客户端，踢你下线。</p>
+<p>          System上运行的实体必须拥有完整的元组才能使得这些行为能够正常工作。像我们游戏里的机器人实体就没有Connection组件和输入流组件，只有一个Stats组件，所以它就不会受到强制下线功能的影响。System的行为依赖于完整集合的“切片”。坦率来说，我们也确实没必要浪费资源去让强制机器人下线。</p>
+<p><strong>为什么不能直接用传统面向对象编程模型？</strong></p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image015.1497422621.png"></p>
+<p>上面System的更新行为会带来了一个疑问：为什么不能使用传统的面向对象编程(OOP)的组件模型呢？例如在Connection组件里重载Update函数，不停地跟踪检测AFK？</p>
+<p>答案是，因为Connection组件会同时被多个<strong>行为</strong>所使用，包括：AFK检查；能接收网络广播消息的已连接玩家列表；存储包括玩家名称在内的状态；存储玩家已解锁成就之类的状态。所以（如果用传统OOP方式的话）具体哪个行为应该放在组件的Update中调用？其余部分又应该放在哪里？</p>
+<p><strong>传统OOP中，一个类既是行为又是数据，但是Connection组件不是行为，它就只是状态</strong>。Connection完全不符合OOP中的对象的概念，它在不同的System中、不同的时机下，意味着完全不同的事情。</p>
+<p>那么把行为和状态区分开，又有什么理论上的优势（conceptual advantages）呢？</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image016.1497422621.png"></p>
+<p>想象一下你家前院盛开的樱桃树吧，从主观上讲，这些树对于你、你们小区业委会主席、园丁、一只鸟、房产税官员和白蚁而言都是完全不同的。从描述这些树的状态上，不同的观察者会看见不同的行为。树是一个被不同的观察者区别对待的主体（subject）。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image017.1497422621.png"></p>
+<p>类比来说，玩家实体，或者更准确地说，Connection组件，<strong>就是一个被不同System区别对待的主体</strong>。我们之前讨论过的管理玩家连接的System，把Connection组件视为AFK踢下线的主体；连接实用程序(ConnectUtility)则把Connection组件看作是广播玩家网络消息的主体；在客户端上，用户界面System则把Connection组件当做记分板上带有玩家名字的弹出式UI元素主体。</p>
+<p>Behavior为什么要这么搞？结果看来，根据主体视角区分所有Behavior，这样来描述一棵<strong>树</strong>的全部行为会更容易，这个道理同样也适用于<strong>游戏对象</strong>(game objects)。</p>
+<p>然而随着这个工业级强度的ECS架构的实现，我们遇到了新的问题。</p>
+<p>首先我们纠结于之前定下的规矩：组件不能有函数；System不能有状态。显而易见地，System应该可以有一些状态的，对吧？一些从其他非ECS架构导入的遗留System都有成员变量，这有什么问题吗？举个例子，InputSystem, 你可以把玩家输入信息保存在InputSystem里，而其他System如果也需要感知按键是否被按下，只需要一个指向InputSystem的指针就能实现。</p>
+<p>在单个组件里存储一个全局变量看起来很很愚蠢，因为你开发一个新的组件类型，不可能只实例化一次(译注：这里的意思是，<strong>如果实例化了多次，就会有多份全局变量的拷贝，明显不合理</strong>)，这一点无需证明。组件通常都是按照我们之前看见过的那种方式（译注：指的是通过ComponentItr&lt;&gt;函数模板那种方式）来迭代访问，如果某个组件在整个游戏里只有一个实例，那这样访问就会看起来比较怪异了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;Client&#x2F;System&#x2F;Input&#x2F;InputSystem.h&quot;</span><br><span class="line"></span><br><span class="line">void CommandSystem::BuildPlayerCommand(PlayerCommands command)</span><br><span class="line">&#123;</span><br><span class="line">	command.Reset();</span><br><span class="line"></span><br><span class="line">	InputSystem* inputSys &#x3D; g_game-&gt;m_inputSystem;</span><br><span class="line"></span><br><span class="line">	if (inputSys-&gt;IsButtonDown(PRIMARY_FIRE))</span><br><span class="line">	&#123;</span><br><span class="line">		command.m_primaryFire &#x3D; true;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (inputSys-&gt;IsButtonDown(SECONDARY_FIRE))</span><br><span class="line">	&#123;</span><br><span class="line">		command.m_secondaryFire &#x3D; true;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line">	inputSys-&gt;PostBuildPlayerCommand(command);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无论如何，这种方式撑了一阵子。我们在System里存储了一次性（one-off）的状态数据，然后提供了一个全局访问方式。从图16可以看到整个访问过程（译注：重点是g_game-&gt;m_inputSystem这一行）。</p>
+<p>如果一个System可以调用另外一个System的话，对于编译时间来说就不太友好了，因为System需要互相包含（include）。假定我现在正在重构InputSystem，想移动一些函数，修改头文件(译注：Client/System/Input/InputSystem.h)，那么所有依赖这个头文件去获取输入状态的System都需要被重新编译，这很烦人，还会有大量的耦合，因为System之间互相暴露了内部行为的实现。（译注：转载不注明出处，真的大丈夫吗？还把译者的名字都删除！声明：这篇文章是本人kevinan应GAD要求而翻译！）</p>
+<p>从图16最下面可以看见我们有个PostBuildPlayerCommand函数，这个函数是InputSystem在这里的主要价值。如果我想在这个函数里增加一些新功能，那么CommandSystem就需要根据玩家的输入，填充一些额外的结构体信息发给服务器。那么我这个新功能应该加到CommandSystem里还是PostBuildPlayerCommand函数里呢？我正在System之间互相暴露内部实现吗？</p>
+<p>随着系统的增长，选择在何处添加新的行为代码变得模棱两可。上面CommandSystem的行为填充了一些结构体，为什么要混在一起？又为什么要放到这里而不是别处？</p>
+<p>无论如何，我们就这样凑合了好一阵子，直到死亡回放(Killcam)需求的出现。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image001.1497422705.png"></p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image002.1497422705.png"></p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image003.1497422705.png"></p>
+<p>          为了实现Killcam，我们会有两个不同的、并行的游戏环境，一个用来进行实时游戏过程渲染，一个用来专门做Killcam。我接下来会展示它们是如何实现的。</p>
+<p>首先，也很直接，我会添加第二个全新的ECS World，现在就有两个World了，一个是liveGame(正常游戏)，一个是replayGame用来实现回放（Replay）。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170616/phpnmuMiA.1497607282.png"></p>
+<p>回放(Replay)的工作方式是这样的，服务器会下发大概8到12秒左右的网络游戏数据，接着客户端翻转World，开始渲染replayAdmin这个World的信息到玩家屏幕上。然后转发网络游戏数据给replayAdmin，假装这些数据真的是来自网络的。此时，所有的System，所有的组件，所有的行为都不知道它们并没有被预测(predict，译注：后面才讲到的同步技术)，它们以为客户端就是实时运行在网络上的，像正常游戏过程一样。</p>
+<p>听起来很酷吧？如果有人想要了解更多关于回放的技术，我建议你们明天去听一下Phil Orwig的分享，也是在这个房间，上午11点整。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image005.1497422706.png"></p>
+<p>无论如何，到现在我们已经知道的是：首先，所有需要全局访问System的调用点（call sites）会突然出错(译注：Tim思维太跳跃了，突然话锋一转，完全跟不上)；另外，不再只有唯一一个全局EntityAdmin了，现在有两个；System A无法直接访问全局System B，不知怎地，只能通过共享的EntityAdmin来访问了，这样很绕。</p>
+<p>在Killcam之后，我们花了很长时间来回顾我们的编程模式的缺陷，包括：怪异的访问模式；编译周期太长；最危险的是内部系统的耦合。看起来我们有大麻烦了。</p>
+<p>针对这些问题的最终解决方案，依赖于这样一个事实：开发一个只有唯一实例的组件其实没什么不对！根据这个原则，我们实现了一个单例（Singleton）组件。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image006.1497422706.png"></p>
+<p>          这些组件属于单一的匿名实体，可以通过EntityAdmin直接访问。我们把System中的大部分状态都移到了单例中。</p>
+<p>          这里我要提一句，只需要被一个System访问的状态其实是很罕见的。后来在开发一个新System的过程中我们保持了这个习惯，如果发现这个系统需要依赖一些状态。就做一个单例来存储，几乎每一次都会发现其他一些System也同样需要这些状态，所以这里其实已经提前解决了前面架构里的耦合问题。</p>
+<p>下面是一个单例输入的例子。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image007.1497422706.png"></p>
+<p>全部按键信息都存在一个单例里面，只是我们把它从InputSystem中移出来了。任何System如果想知道按键是否按下，只需要随便拿一个组件来询问（那个单例）就行了。这样做以后，一些很麻烦的耦合问题消失了，我们也更加遵循ECS的架构哲学了：System没有状态；组件不带行为。</p>
+<p>按键并不是行为，掌管本地玩家移动的Movement System里有一个行为，用这个单例来预测本地玩家的移动。而MovementStateSystem里有个行为是把这些按键信息打包发到服务器（译注：按键对于不同的System就不是不同的主体）。</p>
+<p>结果发现，单例模式的使用非常普遍，我们整个游戏里的40%组件都是单例的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#inlude &quot;Client&#x2F;Components&#x2F;ECSingletonInput.h&quot;</span><br><span class="line"></span><br><span class="line">void CommandSystem::BuildPlayerCommand(PlayerCommand&amp; command)</span><br><span class="line">&#123;</span><br><span class="line">    command.Reset();</span><br><span class="line">    </span><br><span class="line">    SingletonInput* singgInput &#x3D; m_admin-&gt;GetSingletonInput();</span><br><span class="line">    </span><br><span class="line">    if (singlInput-&gt;IsButtonDown(PRIMARY_FIRE))</span><br><span class="line">    &#123;</span><br><span class="line">        command.m_primaryFire &#x3D; true;</span><br><span class="line">    &#125;</span><br><span class="line">    if (singlInput-&gt;IsButtonDown(SECONDARY_FIRE))</span><br><span class="line">    &#123;</span><br><span class="line">        command.m_secondaryFire &#x3D; true;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">    &#x2F;&#x2F; Some helper function inside the CommandSystem</span><br><span class="line">    PostBuildPlayerCommand(singInput, command);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一旦我们把某些System状态移到单例中，会把共享的System函数分解成Utility（实用）函数，这些函数需要在那些单例上运行，这又有点耦合了，我们接下来会详细讨论。</p>
+<p>改造后如图22，InputSystem依然存在（译注：然而并没有看到InputSystem在哪里），它负责从操作系统读取输入操作，填充SingletonInput的值，然后下游的其他System就可以得到同样的Input去做它们想做的。</p>
+<p>像按键映射之类的事情就可以在单例里实现，就与CommandSystem解耦了。</p>
+<p>我们把PostBuildPlayerCommand函数也挪到了CommandSysem里，本应如此，现在可以保证所有对玩家输入的命令（PlayerCommand）的修改都能且仅能在此处进行了。这些玩家命令是很重要的数据结构，将来会在网络上同步并用来模拟游戏过程。</p>
+<p>在引入单例组件时，我们还不知道，我们其实正在打造的是一个解耦合、降低复杂度的开发模式。在这个例子中，CommandSystem是唯一一处能够产生与玩家输入命令相关副作用的地方（译注：sideeffect，指当调用函数时，除了返回函数值之外，还对主调用函数产生附加影响，例如修改全局变量了）。</p>
+<p>每个程序员都能轻易地了解玩家命令的变化，因为在一次System更新的同一时刻，只有这一处代码有可能产生变化。如果想添加针对玩家命令的修改代码，那也很明朗，只能在这个源文件中改，所有的模棱两可都消失了。</p>
+<p>          现在讨论另外一个问题，与共享行为(sharedbehavior)有关。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image009.1497422706.png"></p>
+<p>          共享行为一般出现在同一行为被多个System用到的时候。</p>
+<p>有时，同一个主体的两个观察者，会对同一个行为感兴趣。回到前面樱花树的例子，你的小区业委会主席和园丁，可能都想知道这棵树会在春天到来的时候，掉落多少叶子。</p>
+<p>根据这个输出可以做不同的处理，至少主席可能会冲你大喊大叫，园丁会老老实实回去干活，但是这里的<strong>行为</strong>是相同的。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image010.1497422706.png"></p>
+<p>举个例子，大量代码都会关心“敌对关系”，例如，实体A与实体B互相敌对吗？敌对关系是由3个可选组件共同决定的：filter bits，pet master和pet。filter bits存储队伍编号（team index）；pet master存储了它所拥有全部pet的唯一键；pet一般用于像托比昂的炮台之类。</p>
+<p>如果2个实体都没有filter bits，那么它们就不是敌对的。所以对于两扇门来说，它们就不是敌对的，因为它们的filter bits组件没有队伍编号。</p>
+<p>如果它们(译注：2个实体)都在同一个队伍，那自然就不是敌对的，这很容易理解。</p>
+<p>如果它们分别属于永远敌对的2个队伍，它们会同时检查自己身上和对方身上的pet master组件，确保每个pet都和对方是敌对关系。这也解决了一个问题：如果你跟每个人都是敌对的，那么当你建造一个炮台时，炮台会立马攻击你（译注：完全没理解为什么会这样）。确实会的，这是个bug，我们修复了。（众笑）</p>
+<p>如果你想检查一枚飞行中的炮弹的敌对关系，只需要回溯检查射出这枚炮弹的开火者就行了，很简单。</p>
+<p>这个例子的实现，其实就是个函数调用，函数名是CombatUtilityIsHostile，它接受2个实体作为参数，并返回true或者false来代表它们是否敌对。无数System都调用了这个函数。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image011.1497422706.png"></p>
+<p>图25中就是调用了这个函数的System，但是如你所见，只用到了3个组件，少得可怜，而且这3个组件对它们都是只读的。更重要的是，它们是纯数据，而且这些System绝不会修改里面的数据，仅仅是读。</p>
+<p>再举一个用到这个函数的例子。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image012.1497422706.png"></p>
+<p>作为一个例子，当用到共享行为的Utility函数时我们采用了不同的规则。</p>
+<p>如果你想在多处调用一个Utility函数，那么这个函数就应该依赖很少的组件，而且不应该带副作用或者很少的副作用。如果你的Utility函数依赖很多组件，那就试着限制调用点的数量。</p>
+<p>我们这里的例子叫做CharacterMoveUtil，这个函数用来在游戏模拟过程中的每个tick里移动玩家位置。有两处调用点,一处是在服务器上模拟执行玩家的输入命令，另一处是在客户端上预测玩家的输入。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image013.1497422706.png"></p>
+<p>          我们继续用Utility函数替换 System间的函数调用，并把状态从System移到单例组件中。</p>
+<p>如果你打算用一个共享的Utility函数替换System间的函数调用，是不可能自动地(magically)避免复杂性的，几乎都得做语句级的调整。</p>
+<p>正如你可以把副作用都隐藏在那些公开访问的System函数后面一样，你也可以在Utility函数后面做同样的事。</p>
+<p>如果你需要从好几处调用那些Utility函数，就会在整个游戏循环中引入很多严重的副作用。虽然是在函数调用后面发生的，看起来没那么明显，但这也是相当可怕的耦合。</p>
+<p>如果本次分享只让你学到一点的话，那最好是：<strong>如果只有一个调用点，那么行为的复杂性就会很低，因为所有的副作用都限定到函数调用发生的地方了</strong>。</p>
+<p>          下面浏览一下我们用来减少这类耦合的技术。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image014.1497422707.png"></p>
+<p>当你发现有些行为可能产生严重的副作用，又必须执行时，先问问你自己：这些代码，是必须<strong>现在</strong>就执行吗？</p>
+<p>好的单例组件可以通过“推迟”（Deferment）来解决System间耦合的问题。“推迟”存储了行为所需状态，然后把副作用延后到当前帧里更好的时机再执行。</p>
+<p>例如，代码里有好多调用点都要生成一个碰撞特效(impact effects)。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image015.1497422707.png"></p>
+<p>包括hitscan(译注：直射，没有飞行时间)子弹；带飞行时间的可爆炸抛射物；查里娅的粒子光束，光束长得就像墙壁裂缝，而且在开火时需要保持接触目标；另外还有喷涂。</p>
+<p>创建碰撞特效的副作用很大，因为你需要在屏幕上创建一个新的实体，这个实体可能间接地影响到生命周期、线程、场景管理和资源管理。</p>
+<p>碰撞特效的生命周期，需要在屏幕渲染之前就开始，这意味着它们不需要在游戏模拟的中途显现，在不同的调用点都是如此。</p>
+<p>下图30是用来创建碰撞特效的一小部分代码。基于Transform（译注：变形，包括位移旋转和缩放）、碰撞类型、材质结构数据来做碰撞计算，而且还调用了LOD、场景管理、优先级管理等，最终生成了所需的特效。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image001.1497422727.png"></p>
+<p>      这些代码确保了像弹孔、焦痕持久特效不会很奇怪的叠在一起。例如，你用猎空的枪去射击一面墙，留下了一堆麻点，然后法老之鹰发出一枚火箭弹，在麻点上面造成了一个大面积焦痕。你肯定想删了那些麻点，要不然看起来会很丑，像是那种深度冲突（Z-Fighting）引起的闪烁。我可不想在到处去执行那个删除操作，最好能在一处搞定。</p>
+<p>          我得修改代码了，但是看上去好多啊，调用点一大堆，改完了以后每一处都需要测试。而且以后英雄越来越多，每个人都需要新的特效。然后我就到处复制粘贴这个函数的调用，没什么大不了的，不就是个函数调用嘛，又不是什么噩梦。（众笑）</p>
+<p>          其实这样做以后，会在每个调用点都产生副作用的。程序员就得花费更多脑力来记住这段代码是如何运作的，这就是代码复杂度所在，肯定是应该避免的。</p>
+<p>          于是我们有了Contact单例。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image002.1497422727.png"></p>
+<p>          它包含了一个未决的碰撞记录的数组，每个记录都有足够的信息，来在本帧的晚些时候创建那个特效。如果你想要生成一个特效的时候，只需要添加一条新记录并填充数据就可以了。等运行到帧的后期，进行场景更新和准备渲染的时候，ResolveContactSystem会遍历数组，根据LOD规则生成特效并互相叠加。这样的话，即使有严重的副作用，在每一帧也只是发生在一个调用点而已。</p>
+<p>          除了降低复杂度以外，“推迟”方案还有很多其他优点。数据和指令都缓存在本地，可以带来性能提升；你可以针对特效做性能预算了，例如你有12个D.VA同时在射墙，她们会带来数百个特效，你不用立即创建全部这些特效，你可以仅仅创建自己操纵的D.VA的特效就可以了，其他特效可以在后面的运算过程中分摊开来，平滑性能毛刺。这样做有很多好处，真的，你现在可以实现一些复杂的逻辑了。即使ResolveContactSystem需要执行多线程协作，来确定单个粒子效果的朝向， 现在也很容易做。“推迟”技术真的很酷。</p>
+<p>Utility函数，单例，推迟，这些都只是我们过去3年时间建立ECS架构的一小部分模式。除了限制System中不能有状态，组件里不能有行为以外，这些技术也规定了我们在Overwatch中如何解决问题。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image003.1497422727.png"></p>
+<p>遵守这些限制意味着你要用很多奇技淫巧来解决问题。不过，这些技术最终造就了一个可持续维护的、解耦合的、简洁的代码系统。它限制了你，它把你带到坑里，但这是个“成功之坑”。</p>
+<p>学习了这些之后呢，咱们来聊聊真正的难题之一，以及ECS是如何简化它的。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image004.1497422727.png"></p>
+<p>作为gameplay(游戏玩法，机制)工程师，我们解决过的最重要的问题就是网络同步（netcode）。</p>
+<p>这里先说下目标，是要开发一款快速响应（responsive）的网络对战动作游戏。为了实现快速响应，就必须针对玩家的操作做预测（predict，也可以说是预表现）。如果每个操作都要等服务器回包的话，就不可能有高响应性了。尽管因为一些混蛋玩家作弊所以不能信任客户端，但是已经20年了，这条FPS游戏真理没变过。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image005.1497422727.png"></p>
+<p>          游戏中有快速响应需求的操作包括：移动，技能，就我们而言还有带技能的武器，以及命中判定（hit registration）。</p>
+<p>这里所有的操作都有统一的原则：玩家按下按键后必须立即能够看到响应。即使网络延迟很高时也必须是如此。</p>
+<p>像我这页PPT中演示的那样，ping值已经250ms了，我所有的操作也都是立即得到反馈的，“看上去”很完美，一点延迟都没有。</p>
+<p>然而呢，带预测的客户端，服务器的验证和网络延迟就会带来副作用：预测错误（misprediction，或者说预测失败）了。预测错误的主要症状就一点，会使得你没能成功执行“你认为你已经做出的”操作。</p>
+<p>虽然服务器需要纠正你的操作，但代价并不会是操作延迟。我们会用”确定性”（Determinism）来减少预测错误发生的概率，下面是具体的做法。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image006.1497422728.png"></p>
+<p>          前提条件不变，PING值还是250毫秒。我认为我跳起来了，但是服务器不这么看，我被猛拉回原地，而且被冻住了（冰冻是英雄Mei的技能之一）。这里（PPT中视频演示）你甚至可以看到整个预测的工作过程。预测过程开始时，试图把我们移到空中，甚至大猩猩跳跃技能的CD都已经进入冷却了，这是对的，我们不希望预测准确率仅仅是十之八九。所以我们希望尽可能的快速响应，</p>
+<p>如果你碰巧在斯里兰卡玩这个游戏，而且又被Mei冻住了，那么就有可能会预测错误。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image007.1497422728.png"></p>
+<p>下面我会首先给出一些准则，然后讨论一下这个崭新的技术是如何利用ECS来减少复杂度的。</p>
+<p>          这里不会涉及到通用的数据复制技术、远端实体插值（remote entity interpolation）或者是向后缓和（backwardsreconciliation）技术细节。</p>
+<p>我们完全是站在巨人的肩膀上，使用了一些其他文献中提过的技术而已。后面的幻灯片会假定大家对那些技术都已经很熟悉了。</p>
+<p><strong>确定性(Determinism)</strong></p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image008.1497422728.png"></p>
+<p>          确定性模拟技术依赖于时钟的同步，固定的更新周期和量化。服务器和客户端都运行在这个保持同步的时钟和量化值之上。时间被量化成command frame，我们称之为“命令帧”。每个命令帧都是固定的16毫秒，不过在电竞比赛时是7毫秒。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image009.1497422728.png"></p>
+<p>          模拟过程的频率是固定的，所以需要把计算机时钟循环转换为固定的命令帧序号。我们使用了一个循环累加器来处理帧号的增长。</p>
+<p>在我们的ECS框架内，任何需要进行预表现、或者基于玩家的输入模拟结果的System，都不会使用Update，而是用UpdateFixed。UpdateFixed会在每个固定的命令帧调用。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image010.1497422728.png"></p>
+<p>          假定输出流是稳定的，那么客户端的始终总是会超前于服务器的，超前了大概半个RTT加上一个缓存帧的时长。这里的RTT是PING值加上逻辑处理的时间。上图39的例子中，我们的RTT是160毫秒，一半就是80毫秒，再加上1帧，我们每帧是16毫秒，全加起来就是客户端相对于服务器的提前量。</p>
+<p>          图中的垂直线代表每一个处理中的帧。客户端开始模拟并把第19帧的输入上报给服务器，过一段时间（基本上是半个RTT加上缓冲时间）以后，服务器才开始模拟这一帧。这就是我为什么要说客户端永远是领先于服务器的。</p>
+<p>          正因为客户端是一股脑的尽快接受玩家输入，尽可能地贴近现在时刻，如果还需要等待服务器回包才能响应的话，那看起来就太慢了，会让游戏变得卡顿。图39中的缓冲区，你肯定希望尽可能的小（译注：缓冲越小，模拟时就越接近当前时刻），顺便说一句，游戏运行的频率是60赫兹，我这里播放动画的速度是正常速度的百分之一（译注：这也是为了让观众看得更清晰、明白）。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image011.1497422728.png"></p>
+<p>客户端的预测System读取当前输入，然后模拟猎空的移动过程。我这里是用游戏摇杆来表示猎空的输入操作并上报的。这里的（第14帧）猎空是我当前时刻模拟出来的运动状态，经过完整的RTT加上缓冲事件，最终猎空会从服务器上回到客户端（译注：这里最好结合演讲视频，静态的文章无法表达到位）。这里回来的是经过服务器验证的运动状态快照。服务器模拟权威带来的副作用就是验证需要额外的半个RTT时间才能回到客户端。</p>
+<p>那么这里客户端为什么要用一个环形缓冲（ring buffer）来记录历史运动轨迹呢？这是为了方便与服务器返回的结果进行对比。经过比较，如果与服务器模拟结果相同，那么客户端会开开心心地继续处理下一个输入。如果结果不一致，那就是一个“预测错误”，这时就需要“和解”（reconcile）了。</p>
+<p>如果想简单，那就直接用服务器下发的结果覆盖客户端就行了，但是这个结果已经是“旧”（相对于当前时刻的输入来讲）的了，因为服务器的回包一般都是几百毫秒之前的了。</p>
+<p>除了上面那个环形缓冲以外，我们还有另一个环形缓冲用来存储玩家的输入操作。因为处理移动的代码是确定性的，一旦玩家开始进入他想要进入到移动状态，想要重现这个过程也是很容易的。所以这里我们的处理方式就是，一旦从服务器回包发现预测失败，我们把你的全部输入都重播一遍直至追上当前时刻。如下图41中的第17帧所示，客户端认为猎空正在跑路，而服务器指出，你已经被晕住了，有可能是受到了麦克雷的闪光弹的攻击。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image012.1497422728.png"></p>
+<p>接下来的流程是，当客户端收到描述角色状态的数据包时，我们基本上就得把移动状态及时恢复到最近一次经过服务器验证过状态上去，而且必须重新计算之后所有的输入操作，直至追上当前时刻（第25帧）。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image013.1497422728.jpg"></p>
+<p>          现在客户端进行到第27帧（上图）了，这时我们收到了服务器上第17帧的回包。一旦重新同步（译注：注意下图41中客户端猎空的状态全都更正为“晕”了）以后，就相当于回退到了“帧同步”（lockstep）算法了。</p>
+<p>我们肯定知道我们到底被晕了多久。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image014.1497422728.jpg"></p>
+<p>      到了下图第33帧以后，客户端就知道已经不再是晕住的状态了，而服务器上也正在模拟相同的情况。不再有奇怪的同步追赶问题了。一旦进入这个移动状态，就可以重发玩家当前时刻的操作输入了。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image015.1497422728.png"></p>
+<p>          然而，客户端网络并不保证如此稳定，时有丢包发生。我们游戏里的输入都是通过定制化的可靠UDP实现。所以客户端的输入包常常无法到达服务器，也就是丢包。服务器又试图保持了一个小小的、保存未模拟输入的缓冲区，但是让它尽量的小，以保证游戏操作的流畅。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image016.1497422729.png"></p>
+<p>          一旦这个缓冲区是空的，服务器只能根据你最后一次输入去“猜测”。等到真正的输入到达时，它会试着“缓和”，确保不会弄丢你的任何操作，但是也会有预测错误。</p>
+<p>          下面是见证奇迹的时刻。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image017.1497422729.png"></p>
+<p>          上图可以看到，已经丢了一些来自客户端的包，服务器意识到以后，就会复制先前的输入操作来就行预测，一边祈祷希望预测正确，一边发包告诉客户端：“嘿哥们，丢包了，不太对劲哦”。接下来发生的就更奇怪的了，客户端会进行时间膨胀，比约定的帧率更快地进行模拟。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image001.1497422765.jpg"></p>
+<p>这个例子里，约定好的帧速是16毫秒，客户端就会假装现在帧速是15.2毫秒，它想要更加提前。结果就是，这些输入来的越来越快。服务器上缓冲区也会跟着变大，这就是为了在尽量不浪费的情况下，度过（丢包的）难关。</p>
+<p>这种技术运转良好，尤其是在经常抖动的互联网环境下，丢包和PING都不稳定。即使你是在国际空间站里玩这个游戏，也是可以的。所以我想这个方案真的很NB。</p>
+<p>现在，各位都记个笔记吧，这里收到消息，现在开始放大时间刻度，注意我们是真的加速轮询了，你可以看见图中右边的坡越来越平坦了。它比以前更加快速地上报输入。同时服务器上的缓冲也越来越大了，可以容忍更多地丢包，如果真的发生丢包也有可能在缓冲期间补上。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image002.1497422766.jpg"></p>
+<p>          一旦服务器发现，你现在的网络恢复健康了，它就会发消息给你说：“嘿哥们，现在没事了”。而客户端会做相反的事情：它会缩小时间刻度，以更慢的速度发包。同时服务器会减小缓冲区的尺寸。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image003.1497422766.jpg"></p>
+<p>如果这个过程持续发生，那目标就会是是不要超过承受极限，并通过输入冗余来使得预测错误最小化。</p>
+<p>早些时候我有提到过，服务器一旦饥饿，就会复制最后一次输入操作，对吧？一旦客户端赶上来了，就不会再复制输入了，这样会有因为丢包而被忽略的风险。解决方法是，客户端维持一个输入操作的滑动窗口。这项技术从《雷神世界》开始就有了。</p>
+<p>我们不是仅仅发送当前第19帧的输入，而是把从最后一次被服务器确认的运动状态到现在的全部输入都发送过去。上面的例子可以看出，最后一次从服务器来的确认是第4帧。而我们刚刚模拟到了第19帧。我们会把每一帧的每一个输入都打包成为一个数据包。玩家一般顶多每1/60秒才会有一次操作，所以压缩后数据量其实不大。一般你按住“向前”按钮之前，很可能是已经在“前进”了。</p>
+<p>结果就是，即使发生丢包，下一个数据包到达时依然会有全部的输入操作，这会在你真正模拟以前，就填充上所有因为丢包而出现的空洞。所以这个反馈循环的过程和可增长的缓冲区大小，以及滑动窗口，使得你不会因为丢包而损失什么。所以即使丢包也不会出现预测错误。</p>
+<p>接下来会再次给你展示动画过程，这一次是双倍速，是正常速度的1/50了。</p>
+<p>          这里有全部不稳定因素：网络PING值抖动，有丢包，客户端时间刻度放大，输入窗口填充了全部漏洞，有预测失败，有服务器纠正。我们它们都合在一起播放给你看。</p>
+<p>          接下来的议题，我不想讲太多细节，因为这是<a target="_blank" rel="noopener" href="http://gad.qq.com/article/detail/7206100">Dan Reid的分享的主题</a>(译注，已经翻译)，因为这是开幕式的一部分，所以强烈推荐各位听一下，真的很棒。还是在这个房间，我讲完了就开始。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image004.1497422766.jpg"></p>
+<p>          所有的技能都是用暴雪自有指令式脚本语言Statescript开发的。脚本系统的一大优点就是它可以在前后穿越时空。在客户端预测，然后服务器验证，就像之前的例子里面的移动操作，我们可以把你回滚然后重播所有输入。技能也使用了与移动相同的前后滚原则，先回退到最后一次经过验证的快照的状态，然后重播输入直到当前时刻。</p>
+<p>大家肯定还记得这个例子，就是猎空被晕导致的服务器纠正过程，技能的处理过程是相同的。客户端和服务器都会模拟技能执行的确定性过程，客户端领先于服务器，所以一般是客户端先模拟，服务器稍后跟进。客户端处理预测错误的方式是，先根据服务器快照回滚，然后再前滚（roll forth），就像这样幻灯演示的动画过程那样。这里演示的是死神的幽灵形态。图45中的这些方块（译注：Statescript中的State）代表了幽灵形态，有了这些方块我就可以很自信的播放很酷的特效和动画了。</p>
+<p>幽灵形态结束后就会关闭这些方块。在同一帧中这些小动画会展示出State的关闭过程。紧接着就是幽灵形态的出现，不久以后我们就会得到来自服务器的消息：“嗨，我预测的幽灵形态的过程已经告诉你了，所以你赶紧倒退回去，把这些State都打开，然后咱们再重新模拟全部输入，把这些State都关了”。这基本上就是每次服务器下发更新时回滚和前滚的过程了。</p>
+<p>能预测移动很酷，这意味着可以预测每个技能，我们也确实这样做了，同样，对于武器或者其他的模块，我们也可以这么做。</p>
+<p>现在讨论一下命中判定的预测和确认。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image005.1497422766.jpg"></p>
+<p>          ECS处理这个其实很方便，还记得吗，实体如果拥有行为所需的组件元组，它就会是这个行为的主体。如果你的实体是敌对的（还记得我们之前讲的敌对性检查吧）而且你有一个ModifyHealthQueue组件，你就可以被别的玩家击中，这都受制于“命中判定”。</p>
+<p>          这两个组件，一个是用来检查敌对性的，一个是ModifyHealthQueue。ModifyHealthQueue是服务器记录的你身上的全部伤害和治疗。与单例Contact类似，也是延迟计算的，而且有多个调用点，这就是最大的副作用。延迟计算是因为不想在抛射物模拟途中，立即生成一大堆特效，我们选择延后。</p>
+<p>顺便说一句，伤害，也完全不会在客户端预测，因为它们全都是骗子。</p>
+<p>然而命中判定却是在客户端处理的。所以，如果你有一个MovementState组件，而且是一个不会被本地玩家操纵的remote对象，那你会被运动 System经过插值（interpolate）运算来重新定位。标准插值是发生在最后一次收到的两个MovementState之间的，这项技术自从《Quake》时代就有了。</p>
+<p>System根本不在乎你是一个移动平台、炮台、门还是法老之鹰，你只需要拥有一个MovementState组件就够了，MovementState组件还要负责存储环形缓冲区，还记得环形缓冲嘛？之前用来保存那些猎空小人的位置的。</p>
+<p>有了MovementState组件，服务器在计算命中以前，就会把你回滚到攻击者上报时你所在的那一帧，这就是向后缓和（backwards reconcilation）。这一切都与ModifyHealthQueue组件正交， ModifyHealthQueue组件决定了是否接受伤害。我们还需要倒回门、平台、车的状态，如果子弹被挡住了的话，就无所谓了。一般来说如果你是敌对的，而且有MovementState组件，你就会被倒回，而且可能会受伤。</p>
+<p>          被倒回（rewind）是被一组Utility函数操纵的行为；而受伤是MovementState组件被延迟处理时发生的另外一个行为。这两种行为独立开来，各自发生在各自的组件切片上。</p>
+<p>          射击过程有点抽象，我这里会分解一下。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image006.1497422766.jpg"></p>
+<p>          图47中的框是每一个实体的逻辑边界（bounding volumes）。逻辑边界基本上就是代表了这个源氏的实时快照的并集。所以源氏周围的逻辑边界就代表了过去半秒钟这个角色的全部运动（的最大范围）。如果我现在沿着准星方向射击，在倒回这个角色以前，会首先与这个边界相交，因为基于我的PING值，它有可能在边界内的任意一处位置。</p>
+<p>          这个例子里，如果我沿着这个方向射击，那只需要单独倒回安娜即可，因为子弹只和她的边界相交了。不需要同时倒回大锤和他的能量盾或者车，以及后面的门。</p>
+<p>          射击如同移动一样，也可能会有预测失败。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image007.1497422766.jpg"></p>
+<p>          这里的绿色人偶是死神的客户端视角，黄色是服务器视角。这些绿色的小点点是客户端认为它的子弹击中的位置。可以看见绿色的细线是子弹经过的路径，但服务器在校验的时候，这个蓝紫色的半球才代表实际命中的位置。</p>
+<p>          这完全是个人为制造的例子，确定型模拟过程是很可靠的，为了重现射击过程中的预测失败，我把我的丢包率设置为60%，然后足足射了这个混蛋20分钟才成功重现(众笑)。</p>
+<p>          这里我还得提一句，模拟过程如此精确，要归功于我们的QA团队的同事。他们从不接受“NO”作为答案，而且因为市面上其他游戏都不会把命中判定的预测精确度做到这个水平，所以我们的QA小伙伴们根本不相信我，也不在乎我。只是不停地提bug单，而且是越来越多的bug单，而每一次当我们去检查是否真的有bug时，结果是每次都真的有。这里要对他们表示深深的感谢，有了他们的工作才使得我们能做出如此伟大的产品。  </p>
+<p>如果你的PING值特别高，命中判定就会失效。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image008.1497422766.jpg"></p>
+<p>          一旦PING值超过220毫秒，我们就会延后一些命中效果，也不会再去预测了，直接等服务器回包确认。之所以这么做的原因是，客户端上本来就做了外插值（extrapolate），不想把目标倒回那么远。不想让受害者觉得他们拼命跑到墙后面找掩护，结果还是被回拉、受伤。所以加了一层保护。这倒回外插后一段时间内的行为。下面的视频会演示这个过程（译注：强烈建议看视频）。</p>
+<p>          PING为0的时候，对弹道碰撞做了预测，而击中点和血条没有预测，要等服务器回包才渲染。</p>
+<p>          当PING达到300毫秒的时候，碰撞都不预测了，因为射击目标正在做快读的外插，他实际上根本没在这里，这里我们用了DR（Dead Reckoning）导航推测算法，虽然很接近，但是他真没在那里。死神左右来回晃动时就会出现这种情况，外插时完全无法正确预测。这里我们不会照顾你的感受，你的网络太差了。</p>
+<p>          最后这个视频，PING达到1秒的时候，尤为明显。死神的移动方式不变，还会有外插。顺便提一句，甚至PING已经是1秒钟那么慢了，客户端的所有操作都还是能够立即预测、响应的，只不过大部分都是错的而已。其实我应该放大招的（午时已到），肯定能弄死他。</p>
+<p>          下面讲下其他预测失败的例子，PING值还是不怎么好，150毫秒。这种条件下，无论何时遇到运动预测失败，都会错误的预测命中。下面用慢动作展现一下。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image009.1497422766.jpg"></p>
+<p>      看，都已经飙血了，但是却没看见血条，也没看见弹坑，所以对于弹道碰撞的预测来讲就是错误的。服务器拒绝了，这不是一次合法的命中。碰撞效果预测失败的原因就是“冰墙”立起来了。你“以为”自己开火时还站在地上，但是服务器模拟时，你已经被冰墙升到了空中，就是这个行为导致预测失败的。</p>
+<p>          当我们修复这些微小的命中预测错误时，发现大部分情况都能通过与服务器就位置问题达成一致来消除，所以我们花了很多时间来对齐位置。</p>
+<p>          下面是与运动相关的预测失败的例子，同时也与游戏玩法有关。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image010.1497422766.png"></p>
+<p>          PING值还是150毫秒，你想射中这个死神，但是他处于幽灵形态，箭头碰到他时，客户端会预测说应该有血飚出来，没有弹坑（hit pit），也没有血条。我们根本没击中他，因为它已经先进入幽灵状态了。</p>
+<p>这种例子里，虽然大部分时间都会优先满足进攻者，但除非受害者做了什么事情缓和（mitigate）了这次进攻。在这个例子里，死神的幽灵形态会给他3秒钟的无敌时间。无论如何，我们没有真的打到死神。</p>
+<p>让我从哲学角度想象一下，你就是那个死神，你进入了幽灵状态，但事实上服务器很可能会让你播放所有特效，让后让你死掉，因为你不可能如此快速进入那个状态。  </p>
+<p>ECS简化了网络同步问题。网络同步代码中用到的System，知道自己何时被用于玩家身上，很简单直接，基本上如果一个实体被一个带有Connection组件的东西控制了，它就是一个玩家。</p>
+<p>          System也知道哪些目标需要被倒回到进攻者时刻的那一帧上，任何包含MovementState组件的实体都会被倒回。</p>
+<p>实体与组件之间的内在关联主要行为是MovementState可以在时间线上被取消。</p>
+<p>          上图52是System和组件的全景图，其中只有少数几个与网络同步行为有关。而这就是我们已知最复杂的问题了。System中有两个是NetworkEvent和NetworkMessage，是网络同步模块的核心组成部分，参与了接收输入和发送输出这样的典型网络行为。</p>
+<p>          还有另外几个System，一只手就数得过来：InterpolateMovement，Weapons，Statescript，MovementState，我特别想删了MovementState，因为我不喜欢它。所以呢，实际上网络同步模块中，只有3个System是与gameplay有关的，其中用到的组件就是右边高亮列出的，也只有组件对于网络同步模块是只读的。真正修改了数据的就是像ModifyHealthQueue，因为对敌人造成的伤害是真实的。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image011.1497422766.png"></p>
+<p>现在回头看一下，用了ECS这么多年后，都学到了哪些知识与心得。</p>
+<p>我有点希望System和Utility都能回到最早那个ECS操作元祖的权威例程的用法，做法有点特殊，我们只遍历一个组件就够了，再通过它访问所有兄弟组件。对于真正复杂的组件访问元组模型，你必须知道确切的访问对象才行。如果有个行为需要一个含有40个组件的元组，那可能是因为你的系统设计过于复杂了，元组之间有冲突。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image012.1497422766.png"></p>
+<p>元组另一个很酷的副作用是，你掌握了关于什么System能访问什么状态的先验知识，那么回到我们用到元组的那个原型引擎当中，就可以知道2或3个System可以操作不同的组件集合。因为根据元组的定义就可以知道他们的用途。这里设计的非常容易扩展。就像之前那个弹钢琴的动画一样，不过可以看到多个System同时点亮，只因为它们操纵的组件集合是不同的。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170616/phpA5sSk5.1497607366.png"></p>
+<p>由于已经知道组件读写的优先级，System的轮询可以做到多线程处理gameplay代码。这里要提一句，Transform组件依然很受欢迎，但只有为数不多的几个System会真正修改它，大部分System都是对它只读。所以当你定义元组时，可以把组件标记上“只读”属性，这就意味着，即使有多个System都操作对该组件，但都是只读，可以并行处理。</p>
+<p>实体生命周期管理需要一些技巧，尤其是在一帧的中间创建出来的那些。在早期，我们推迟了创建和销毁行为，当你说“嘿我想要创建一个实体时”，实际上是在那一帧结束时才完成的。事实证明，推迟销毁一点问题都没有，而推迟创建却有一大堆副作用。尤其是当你在System A 中申请创建一个新的实体，然后在System B中使用，这时如果你推迟了创建过程，你就要隔一帧才能使用。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image014.1497422767.png"></p>
+<p>这有点不爽。这也增加了很多内部复杂性(译注：看到这里，复杂性都是一些潜规则，需要花脑力去记住的hardcode)，我们想修改掉这部分代码，使它可以在一帧的中途创建好，这样就可以马上使用了。</p>
+<p>我们在游戏发布之后才做了这些改动，实在很恐怖。这个补丁打在了1.2或者1.3版本，上线那天晚上我都是通宵的。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image015.1497422767.png"></p>
+<p>我们大概花了1年半的时间来制定ECS的使用准则，就像之前那个权威的例子，但是我们需要改造一些现有的代码使之能够适应新的架构。这些准则包括：组件没有函数；System没有状态；共享代码要放到Utils里；组件里复杂的副作用要通过队列的方式推迟处理，尤其是单例组件；System不能调用其他System的函数，即使是我们自己的取名System也不行，这个System几年之前暴雪分享过的。</p>
+<p>仍然有大量代码不符合这个规范，所以它们是复杂度和维护工作的主要来源，就一点也不奇怪了。通过检视代码变更数量或者说bug数量，你就能发现这一点。</p>
+<p>所以，如果你有什么遗留代码而且无法融入ECS规范的话，就绝对不应该使用。保持子系统整洁，不用创建任何代理组件去对它们进行封装。</p>
+<p>不同的系统设计是用来解决问题的不同方法。</p>
+<p>ECS是一个集成大量System的工具，不合适的系统设计原则就不应该被采用。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image016.1497422767.png"></p>
+<p>          ECS的设计目的是用来把大量的模块进行集成并解耦，很多 System及其依赖的组件都是冰山形状的。</p>
+<p>冰山型组件对其他ECS的System暴露的表面很小，但它们内部其实有大量的状态、代理或者数据结构是ECS层无法访问的。</p>
+<p>在线程模型中这些冰山的体型相当明显，大部分ECS的工作，例如更新System，都是发生在主线程(图58顶部)上的。我们也用到了大量的多线程技术，像fork和join。这个例子里，有角色发射了大量的抛射物，然后脚本System说我们需要生成一些抛射物，就创建了几个工作线程来干活。还有这里是ResolvedContactSystem想要创建一些碰撞特效，这里花费了几个工作线程去做这项工作。</p>
+<p>抛射物模拟的幕后工作已经被隔离，而且对上层ECS是不可见的，这样很好。</p>
+<p>另外一个很酷的例子就是AIPetDataSystem，很好的应用了fork和join模式，在ECS层面，只有一点点耦合，可能是说“嗨，这是一扇可破坏的门，你可能需要在这些区域重建路径”，但是幕后工作其实很多，像获取所有三角形，渲染并裁减，这些都与ECS无关，我们也不应该把ECS置于那些问题领域，应该自己想办法。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image017.1497422767.png"></p>
+<p>          这里的视频演示的是PathValidationSystem，路径（Path）就是全部这些蓝色色块，AI可以行走于其表面上。其实路径并不只用于AI，也用在很多英雄的技能上。所以就需要在服务器和客户端之间对这些路径进行数据同步。</p>
+<p>          视频里的禅亚塔将会破坏这里的这些物品，你会看见破坏后的物体掉落到表面下方。然后那里的门会打开我们会把那些表面粘在一起。PathValidationSystem只需要说：“嗨，三角形有变化”。然后冰山背后就会用全部数据重建路径。</p>
+<p><img src="http://gameweb-img.qq.com/gad/20170614/image018.1497422767.png"></p>
+<p>          现在准备结束今天的分享了。</p>
+<p>ECS是Overwatch的粘合剂，它很酷，因为它可以帮你用最小的耦合来集成大量分散的系统。如果你打算用ECS定义你的规范，实际上无论你想用什么架构来快速定义你的规范，应该都是只有少数程序员需要接触物理系统代码、脚本引擎或者音频库。但是每个人都应该能够用到胶水代码，一起集成系统。</p>
+<p>          实施这些限制，就能够马到成功。</p>
+<p>          事实证明，网络同步真的很复杂，所以必须尽可能的与引擎其余部分解耦，ECS是解决这个问题的好办法。</p>
+<p>          最后在接受提问以前，我想感谢我们团队成员，尤其是gameplay工程师，大家花了3年时间创造了如此美妙的艺术品。我们共同努力，创建原则，架构不断进化，结果也是有目共睹的。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ECS//" class="article-tag-list-link color4">ECS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/11/%E3%80%8A%E5%AE%88%E6%9C%9B%E5%85%88%E9%94%8B%E3%80%8B%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%90%8C%E6%AD%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-【unity】扒一扒profiler中这几个占坑鬼" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/29/%E3%80%90unity%E3%80%91%E6%89%92%E4%B8%80%E6%89%92profiler%E4%B8%AD%E8%BF%99%E5%87%A0%E4%B8%AA%E5%8D%A0%E5%9D%91%E9%AC%BC/">【Unity】扒一扒Profiler中这几个“占坑鬼”</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/29/%E3%80%90unity%E3%80%91%E6%89%92%E4%B8%80%E6%89%92profiler%E4%B8%AD%E8%BF%99%E5%87%A0%E4%B8%AA%E5%8D%A0%E5%9D%91%E9%AC%BC/" class="archive-article-date">
+  	<time datetime="2020-04-29T09:42:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="【Unity】扒一扒Profiler中这几个“占坑鬼”"><a href="#【Unity】扒一扒Profiler中这几个“占坑鬼”" class="headerlink" title="【Unity】扒一扒Profiler中这几个“占坑鬼”"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/uwa4d/article/details/53709413">【Unity】扒一扒Profiler中这几个“占坑鬼”</a></h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/29/%E3%80%90unity%E3%80%91%E6%89%92%E4%B8%80%E6%89%92profiler%E4%B8%AD%E8%BF%99%E5%87%A0%E4%B8%AA%E5%8D%A0%E5%9D%91%E9%AC%BC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-静态类和单例模式区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/%E9%9D%99%E6%80%81%E7%B1%BB%E5%92%8C%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%8C%BA%E5%88%AB/">静态类和单例模式区别</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/28/%E9%9D%99%E6%80%81%E7%B1%BB%E5%92%8C%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+  	<time datetime="2020-04-28T10:01:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>内容来自 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhangzt/p/4350556.html">静态类和单例模式区别</a></p>
+<p>观点一：（单例 ）<br>单例模式比静态方法有很多优势：<br>首先，单例可以继承类，实现接口，而静态类不能（可以集成类，但不能集成实例成员）；<br>其次，单例可以被延迟初始化，静态类一般在第一次加载是初始化；<br>再次，单例类可以被集成，他的方法可以被覆写；<br>最后，或许最重要的是，单例类可以被用于多态而无需强迫用户只假定唯一的实例。举个例子，你可能在开始时只写一个配置，但是以后你可能需要支持超过一个配 置集，或者可能需要允许用户从外部从外部文件中加载一个配置对象，或者编写自己的。你的代码不需要关注全局的状态，因此你的代码会更加灵活。</p>
+<p>观点二：（静态方法 ） 静态方法中产生的对象，会随着静态方法执行完毕而释放掉，而且执行类中的静态方法时，不会实例化静态方法所在的类。如果是用singleton,   产生的那一个唯一的实例，会一直在内存中，不会被GC清除的(原因是静态的属性变量不会被GC清除)，除非整个JVM退出了。这个问题我之前也想几天，并 且自己写代码来做了个实验。</p>
+<p>观点三：（Good！ ）<br>由于DAO的初始化，会比较占系统资源的，如果用静态方法来取，会不断地初始化和释放，所以我个人认为如果不存在比较复杂的事务管理，用 singleton会比较好。个人意见，欢迎各位高手指正。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/28/%E9%9D%99%E6%80%81%E7%B1%BB%E5%92%8C%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%8C%BA%E5%88%AB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-assetbundles-依赖关系问题与优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/11/assetbundles-%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%E9%97%AE%E9%A2%98%E4%B8%8E%E4%BC%98%E5%8C%96/">AssetBundles 依赖关系问题与优化</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/11/assetbundles-%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%E9%97%AE%E9%A2%98%E4%B8%8E%E4%BC%98%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2020-04-11T03:54:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考文章： <a target="_blank" rel="noopener" href="https://blog.csdn.net/swj524152416/article/details/73348296">【Unity】AssetBundle和AssetBundle Manager的使用和介绍（流程和依赖关系）</a></p>
+<p>占坑</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/11/assetbundles-%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%E9%97%AE%E9%A2%98%E4%B8%8E%E4%BC%98%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-unity-静态合并与动态合并" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/10/unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/">Unity 静态合并与动态合并</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/10/unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/" class="archive-article-date">
+  	<time datetime="2020-04-10T07:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>文章： <a target="_blank" rel="noopener" href="https://blog.csdn.net/le_sam/article/details/84929740">Unity__静态合批与动态合批</a></p>
+<p>draw call是openGL的描绘次数（directX没怎么研究，但原理应该差不多）<br>一个简单的openGL的绘图次序是：设置颜色→绘图方式→顶点座标→绘制→结束。<br>每帧都会重复以上的步骤。这就是一次draw call  </p>
+<p>如果有两个model，那么需要  <br>设置颜色→绘图方式→顶点座标A→绘制→结束。<br>设置颜色→绘图方式→顶点座标B→绘制→结束。<br>两次draw calls;<br>也就是说在openGl绘制前，如果色彩通道(color filter)，绘图方式(shader)，顶点座标（model）不同的情况下draw calls就会增加。  </p>
+<p><strong>对openGl来说绘制参数（状态值）的变更要比绘制大量的顶点更耗费cpu。</strong>  </p>
+<p>所谓高速绘图就是，在尽量不改变openGl状态值的情况下，用一次draw call完成所有绘制。<br>比如上面的例子：<br>设置颜色→绘图方式→顶点座标A＋顶点座标B→绘制→结束。<br>就要更加有效率。  </p>
+<p>个人估计unity3d的dynamic batch,static batch都是通过一定的方法使不同的object的顶点座标能够结合成一个整体，达到减少draw calls的效果。<br>但是有一定的要求限制，比如material要相同，mesh要相同并在300个面以内等等，这些都是为了保证openGl的状态值不改变。</p>
+<p><strong>Unity在 Player Setting 里的两个功能选项 Static Batching 与 Dynamic Batching。功能描述如下：</strong></p>
 <ol>
-<li>将光源位置（这是通过参数传入的）乘以模型视图矩阵（这是着色器提供给我们的），就能得到光源相对于摄像机的位置</li>
-<li>将这一位置归一化（就是计算单位向量），得到光源相对于摄像机的角度</li>
-<li>将其点乘单位法向量，得到亮度值（回想一下，两个向量点乘的意思是，获得一个向量在另一个向量上的投影，所以，这里得到的是光源在法向量方向的投影长度，它决定了一个点有多亮）</li>
+<li>Static Batching 是将标明为 Static 的静态物件，如果在使用相同材质球的条件下，Unity 会自动帮你把这两个物件合并成一个 Batch，送往 GPU 来处理。这功能对效能上非常的有帮助，所以是需要付费才有的。</li>
+<li>Dynamic Batching 是在物件小于300面的条件下(不论物件是否为静态或动态)，在使用相同材质球下，Unity就会自动帮你合合并成一个 Batch 送往 GPU 来处理。</li>
 </ol>
-<h4 id="MVP矩阵"><a href="#MVP矩阵" class="headerlink" title="MVP矩阵"></a>MVP矩阵</h4><p><img src="/2019/05/01/渲染相关学习/matrix_change.jpg" alt="MVP变换 - 矩阵变换"><br>其中，中间的三项有个非常霸气的名字：MVP 矩阵！<br>为什么不是 PVM ？<br>因为从逻辑上来说，是先把模型点坐标向量乘以模型矩阵，然后乘以视图矩阵，然后乘以投影矩阵，然后乘以视口矩阵的。所以先后顺序的确是 MVP。<br>我们知道矩阵乘法是一个很耗时的操作，而由于模型矩阵和视图矩阵更可能是不变的，因而根据矩阵结合律，将它们先相乘得到模型视图矩阵（modal-view matrix），再与点坐标相乘。这样，以后几帧的计算，就可以不用分别乘以模型矩阵和视图矩阵，而是只乘以模型视图矩阵，达到减少矩阵乘法的次数的效果。<br>这一点稍作了解即可，如果看不懂，你只需要了解——<br><strong>一个物体的三维坐标向量，乘以模型视图矩阵后，能够得到它在试图坐标系中的位置，也就是它相对于摄像机的坐标位置。</strong></p>
+<p>在屏幕上渲染物体，引擎需要发出一个绘制调用来访问图形API（iOS系统中为OpenGL ES）。每个绘制调用需要进行大量的工作来访问图形API，从而导致了CPU方面显著的性能开销。</p>
+<p>Unity在运行时可以将一些物体进行合并，从而用一个绘制调用来渲染他们。这一操作，我们称之为“批处理”。一般来说，Unity批处理的物体越多，你就会得到越好的渲染性能。</p>
+<p>Unity中内建的批处理机制所达到的效果要明显强于使用几何建模工具（或使用Standard Assets包中的CombineChildren脚本）的批处理效果。这是因为，Unity引擎的批处理操作是在物体的可视裁剪操作之后进行的。Unity先对每个物体进行裁剪，然后再进行批处理，这样可以使渲染的几何总量在批处理前后保持不变。但是，使用几何建模工具来拼合物体，会妨碍引擎对其进行有效的裁剪操作，从而导致引擎需要渲染更多的几何面片。</p>
+<p><strong>材质</strong></p>
+<p>只有拥有相同材质的物体才可以进行批处理。因此，如果你想要得到良好的批处理效果，你需要在程序中尽可能地复用材质和物体。</p>
+<p>如果你的两个材质仅仅是纹理不同，那么你可以通过 纹理拼合 操作来将这两张纹理拼合成一张大的纹理。一旦纹理拼合在一起，你就可以使用这个单一材质来替代之前的两个材质了。</p>
+<p>如果你需要通过脚本来访问复用材质属性，那么值得注意的是改变Renderer.material将会造成一份材质的拷贝。因此，你应该使用Renderer.sharedMaterial来保证材质的共享状态。</p>
+<p><strong>动态批处理</strong></p>
+<p>如果动态物体共用着相同的材质，那么Unity会自动对这些物体进行批处理。</p>
+<p>动态批处理操作是自动完成的，并不需要你进行额外的操作。</p>
+<p><strong>Tips:</strong></p>
+<p>1、 批处理动态物体需要在每个顶点上进行一定的开销，所以动态批处理仅支持小于900顶点的网格物体。</p>
+<p>2、 如果你的着色器使用顶点位置，法线和UV值三种属性，那么你只能批处理300顶点以下的物体；如果你的着色器需要使用顶点位置，法线，UV0，UV1和切向量，那你只能批处理180顶点以下的物体。</p>
+<p>3、请注意：属性数量的限制可能会在将来进行改变。</p>
+<p>4、 不要使用缩放尺度（scale）。分别拥有缩放尺度(1,1,1)和(2,2,2)的两个物体将不会进行批处理。</p>
+<p>5、 统一缩放尺度的物体不会与非统一缩放尺度的物体进行批处理</p>
+<p>使用缩放尺度(1,1,1)和 (1,2,1)的两个物体将不会进行批处理，但是使用缩放尺度(1,2,1)和(1,3,1)的两个物体将可以进行批处理。</p>
+<p>6、 使用不同材质的实例化物体（instance）将会导致批处理失败。</p>
+<p>7、拥有lightmap的物体含有额外（隐藏）的材质属性，比如：lightmap的偏移和缩放系数等。所以，拥有lightmap的物体将不会进行批处理（除非他们指向lightmap的同一部分）。</p>
+<p>8、 多通道的shader会妨碍批处理操作。比如，几乎unity中所有的着色器在前向渲染中都支持多个光源，并为它们有效地开辟多个通道。</p>
+<p>9、预设体的实例会自动地使用相同的网格模型和材质。</p>
+<p><strong>静态批处理</strong></p>
+<p>相对而言，静态批处理操作允许引擎对任意大小的几何物体进行批处理操作来降低绘制调用（只要这些物体不移动，并且拥有相同的材质）。因此，静态批处理比动态批处理更加有效，你应该尽量使用它，因为它需要更少的CPU开销。</p>
+<p>为了更好地使用静态批处理，你需要明确指出哪些物体是静止的，并且在游戏中永远不会移动、旋转和缩放。想完成这一步，你只需要在检测器（Inspector）中将Static复选框打勾即可，如下图所示：</p>
+<p><img src="http://www.upcknox.com/wp-content/uploads/2020/04/20130905093854640.jpg"></p>
+<p><strong>使用静态批处理操作需要额外的内存开销来储存合并后的几何数据</strong>。在静态批处理之前，如果一些物体共用了同样的几何数据，那么引擎会在编辑以及运行状态对每个物体创建一个几何数据的备份。这并不总是一个好的想法，因为有时候，你将不得不牺牲一点渲染性能来防止一些物体的静态批处理，从而保持较少的内存开销。比如，将浓密森里中树设为Static，会导致严重的内存开销。</p>
+<p><strong>静态批处理目前只支持Unity iOS Advanced。</strong></p>
 
       
 
@@ -544,10 +1064,21 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/01/渲染相关学习/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/10/unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/">展开全文 >></a>
         </p>
       
 
@@ -577,30 +1108,27 @@
 
 
   
-    <article id="post-Unity-Shader-Learn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-纯animation下的动画融合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/20/Unity-Shader-Learn/">Unity_Shader_Learn</a>
+      <a class="article-title" href="/2020/04/09/%E7%BA%AFanimation%E4%B8%8B%E7%9A%84%E5%8A%A8%E7%94%BB%E8%9E%8D%E5%90%88/">纯Animation下的动画融合</a>
     </h1>
   
 
         
-        <a href="/2019/04/20/Unity-Shader-Learn/" class="archive-article-date">
-  	<time datetime="2019-04-20T10:54:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
+        <a href="/2020/04/09/%E7%BA%AFanimation%E4%B8%8B%E7%9A%84%E5%8A%A8%E7%94%BB%E8%9E%8D%E5%90%88/" class="archive-article-date">
+  	<time datetime="2020-04-09T12:41:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<hr>
-<h2 id="关于Pass的理解"><a href="#关于Pass的理解" class="headerlink" title="关于Pass的理解"></a>关于Pass的理解</h2><p><strong>介于目前还未深入学习图形学，现在所学习的内容均基于《UnityShader入门精要》与网络</strong><br><a href="https://www.zhihu.com/question/40306111" target="_blank" rel="noopener">渲染中的pass是什么意思（知乎）？</a><br>来源：知乎<br>就是一次像素处理和一次顶点处理<br>也就是一次绘制。<br>有些渲染需要多次绘制有的一次绘制即可。<br>比如说模糊，可以垂直一个pass加水平一个pass 来处理，<br>也可以合并到一个pass处理，但如果是sm2，受到限制可能必须拆开成为两个pass才能做</p>
-<p><a href="https://www.zhihu.com/question/305707508/answer/596008426" target="_blank" rel="noopener">一夜九卷的cxc的回答</a><br>来源：知乎<br>相似问题：计算机图形里面的RenderingPass（渲染通道）我这样理解对吗？<br>1.一个渲染通道就是走完一个图形底层的渲染流程（VS-&gt;TS-&gt;GS-&gt;光栅化-&gt;PS）吗？<br>    对，一个rendering pass就是完整的走一遍渲染管线，每一个pass最终都得到一帧数据，放在绑定的帧缓存中（可以是off-screen方式，也可以直接渲染到系统帧缓存）,一个帧缓存对象可以挂载深度缓存，颜色缓存，模板缓存。后续的pass可以通过纹理采样的方式来获取前驱pass得到的颜色、深度或者模板信息。<br>    2.然后多个渲染通道混合在一起最后组成一帧呈现到屏幕上？我这样理解对吗？<br>    可以说对，也可以说不对。要看你怎么定义这个混合操作，一般来说multiple passes都是为了实现一个rendering pass做不到的效果，或者更高效的方式。比如shadowing就是要先渲染depth map，再渲染场景，一遍pass是肯定不行的，因为你没有得到整个场景的depth信息，那你能不能说depth信息和场景信息混合起来就得到了带shadow的场景呢？ 也可以，因为lighting pass确实利用了depth信息。简单来说，多rendering pass中的每一个pass都是相互依赖的，后面的pass一般来说用到了前面pass得到的数据，比如深度信息啊，几何信息啊这些，最后一个pass得到最终的帧缓存，相当于是多道“工序”这么个意思，每个pass都是一道工序。<br>    断水流宗师: 2 个月前一个例子就是『图层』的概念，一直保留上一个子过程的结果。<br>    一夜九卷的cxc (作者) 回复断水流宗师2 个月前不同图层之间的像素是叠加 融混操作来得到最终像素颜色，而不同rendering pass之间不一定会有这种像素颜色的叠加，有可能只是利用某个pass的结果来辅助后续pass作一些判断，比如丢弃片源(early-z)</p>
+        <p>占坑： CrossFade</p>
 
       
 
@@ -610,10 +1138,21 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/20/Unity-Shader-Learn/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/09/%E7%BA%AFanimation%E4%B8%8B%E7%9A%84%E5%8A%A8%E7%94%BB%E8%9E%8D%E5%90%88/">展开全文 >></a>
         </p>
       
 
@@ -643,53 +1182,30 @@
 
 
   
-    <article id="post-GPU流水线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-shader-clip" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/18/GPU流水线/">GPU流水线</a>
+      <a class="article-title" href="/2020/04/09/shader-clip/">Shader Clip()</a>
     </h1>
   
 
         
-        <a href="/2019/04/18/GPU流水线/" class="archive-article-date">
-  	<time datetime="2019-04-18T09:49:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
+        <a href="/2020/04/09/shader-clip/" class="archive-article-date">
+  	<time datetime="2020-04-09T04:14:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><em>学习自《Unity Shader入门精要》 - 2.3 GPU流水线</em></p>
-<hr>
-<p>当GPU从CPU获得渲染命令后，会执行GPU流水线操作，该命令会<strong>指向一个需要被渲染的图元（图元可以是点、线、三角面等）列表</strong>，而不包含任何材质信息<br>当确定执行Draw Call时，GPU会根据<strong>渲染状态（材质、纹理、着色器等）</strong>和所有的输入定点数据进行计算。</p>
-<h3 id="渲染流程图"><a href="#渲染流程图" class="headerlink" title="渲染流程图"></a>渲染流程图</h3><h4 id="渲染总流程"><a href="#渲染总流程" class="headerlink" title="渲染总流程"></a>渲染总流程</h4><p><div id="flowchart-0" class="flow-chart"></div></p>
-<h4 id="应用阶段"><a href="#应用阶段" class="headerlink" title="应用阶段"></a>应用阶段</h4><p><div id="flowchart-1" class="flow-chart"></div></p>
-<h4 id="几何阶段"><a href="#几何阶段" class="headerlink" title="几何阶段"></a>几何阶段</h4><p><div id="flowchart-2" class="flow-chart"></div></p>
-<h4 id="光栅化阶段"><a href="#光栅化阶段" class="headerlink" title="光栅化阶段"></a>光栅化阶段</h4><p><div id="flowchart-3" class="flow-chart"></div></p>
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">op1=>operation: 应用阶段
-op2=>operation: 几何操作
-op3=>operation: 光栅化阶段
-
-op1(right)->op2(right)->op3</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script><textarea id="flowchart-1-code" style="display: none">op1=>operation: 加载数据到显存
-op2=>operation: 设置渲染状态
-op3=>operation: 调用Draw Call
-
-op1(right)->op2(right)->op3</textarea><textarea id="flowchart-1-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-1-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-1-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-1", options);</script><textarea id="flowchart-2-code" style="display: none">op1=>operation: 顶点着色器
-op2=>operation: 曲面细分着色器
-op3=>operation: 几何着色器
-op4=>operation: 裁剪
-op5=>operation: 屏幕映射
-
-op1(right)->op2(right)->op3(right)->op4(right)->op5</textarea><textarea id="flowchart-2-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-2-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-2-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-2", options);</script><textarea id="flowchart-3-code" style="display: none">op1=>operation: 三角形设置
-op2=>operation: 三角形遍历
-op3=>operation: 片元着色器
-op4=>operation: 逐片源操作
-
-op1(right)->op2(right)->op3(right)->op4</textarea><textarea id="flowchart-3-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-3-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-3-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-3", options);</script></p>
+        <p>可以用来剪切括号里值小于0的像素</p>
+<p>本人大多数用于剪掉alpha小于某值得像素</p>
+<p>例：</p>
+<p>clip(texColor.a - _Cutoff);</p>
 
       
 
@@ -699,10 +1215,21 @@ op1(right)->op2(right)->op3(right)->op4</textarea><textarea id="flowchart-3-opti
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/18/GPU流水线/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/09/shader-clip/">展开全文 >></a>
         </p>
       
 
@@ -732,6 +1259,92 @@ op1(right)->op2(right)->op3(right)->op4</textarea><textarea id="flowchart-3-opti
 
 
   
+    <article id="post-生命周期中的碰撞检测" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/02/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%AD%E7%9A%84%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B/">生命周期中的碰撞检测</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/02/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%AD%E7%9A%84%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B/" class="archive-article-date">
+  	<time datetime="2020-04-02T06:48:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://www.upcknox.com/wp-content/uploads/2020/04/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-733x1024.jpg"></p>
+<p>生命周期</p>
+<p>如果一个物体同时碰撞了多个物体，那一个OnTriggerXXX会循环多次，才会执行下一次的FixedUpdate或Update</p>
+<p><img src="http://www.upcknox.com/wp-content/uploads/2020/04/TIM%E6%88%AA%E5%9B%BE20200402144458.png"></p>
+<p>测试程序</p>
+<p><img src="http://www.upcknox.com/wp-content/uploads/2020/04/TIM%E6%88%AA%E5%9B%BE20200402144452.png"></p>
+<p>一个角色同时碰撞两个物体</p>
+<p><img src="http://www.upcknox.com/wp-content/uploads/2020/04/TIM%E6%88%AA%E5%9B%BE20200402144426.png"></p>
+<p>输出结果</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/02/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%AD%E7%9A%84%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
@@ -823,6 +1436,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">着色器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">纹理</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://dead-rabbit.github.io">
   <title>协程相关学习 | 红黑兔子头</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="以下内容抄自：Unity3d IEnumerator 协程的理解 协程是什么从程序结构的角度来讲，协程是一个有限状态机，这样说可能并不是很明白，说到协程（Coroutine），我们还要提到另一样东西，那就是子例程（Subroutine），子例程一般可以指函数，函数是没有  状态 的，等到它return之后，它的所有局部变量就消失了，但是在协程中我们可以在  一个函数里多次返回， 局部变量被当作状态">
 <meta property="og:type" content="article">
 <meta property="og:title" content="协程相关学习">
-<meta property="og:url" content="http://dead-rabbit.github.io/2019/05/09/协程相关学习/index.html">
+<meta property="og:url" content="http://dead-rabbit.github.io/2019/05/09/%E5%8D%8F%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="红黑兔子头">
 <meta property="og:description" content="以下内容抄自：Unity3d IEnumerator 协程的理解 协程是什么从程序结构的角度来讲，协程是一个有限状态机，这样说可能并不是很明白，说到协程（Coroutine），我们还要提到另一样东西，那就是子例程（Subroutine），子例程一般可以指函数，函数是没有  状态 的，等到它return之后，它的所有局部变量就消失了，但是在协程中我们可以在  一个函数里多次返回， 局部变量被当作状态">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-21T09:51:03.865Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-09T03:12:06.000Z">
+<meta property="article:modified_time" content="2020-08-21T09:51:03.865Z">
+<meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="协程相关学习">
-<meta name="twitter:description" content="以下内容抄自：Unity3d IEnumerator 协程的理解 协程是什么从程序结构的角度来讲，协程是一个有限状态机，这样说可能并不是很明白，说到协程（Coroutine），我们还要提到另一样东西，那就是子例程（Subroutine），子例程一般可以指函数，函数是没有  状态 的，等到它return之后，它的所有局部变量就消失了，但是在协程中我们可以在  一个函数里多次返回， 局部变量被当作状态">
   
     <link rel="alternative" href="/atom.xml" title="红黑兔子头" type="application/atom+xml">
   
@@ -36,8 +36,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.1.0"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -50,7 +50,7 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">死兔子。</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -59,7 +59,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -108,7 +108,7 @@
 				<img src="" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">死兔子。</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -139,7 +139,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -166,7 +166,7 @@
   
 
         
-        <a href="/2019/05/09/协程相关学习/" class="archive-article-date">
+        <a href="/2019/05/09/%E5%8D%8F%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
   	<time datetime="2019-05-09T03:12:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
 </a>
         
@@ -174,11 +174,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>以下内容抄自：<a href="https://blog.csdn.net/jasonwang18/article/details/55519165" target="_blank" rel="noopener">Unity3d IEnumerator 协程的理解</a></p>
+        <p>以下内容抄自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/jasonwang18/article/details/55519165">Unity3d IEnumerator 协程的理解</a></p>
 <h4 id="协程是什么"><a href="#协程是什么" class="headerlink" title="协程是什么"></a>协程是什么</h4><p>从程序结构的角度来讲，协程是一个有限状态机，这样说可能并不是很明白，说到协程（Coroutine），我们还要提到另一样东西，那就是子例程（Subroutine），子例程一般可以指函数，函数是没有  状态 的，等到它return之后，它的所有局部变量就消失了，但是在协程中我们可以在  一个函数里多次返回， 局部变量被当作状态保存在协程函数中，知道最后一次return，协程的状态才别清除。 </p>
 <p>简单来说，协程就是：你可以写一段顺序的代码，然后标明哪里需要暂停，然后在下一帧或者一段时间后，系统会继续执行这段代码。</p>
-<h4 id="协程怎么用？"><a href="#协程怎么用？" class="headerlink" title="协程怎么用？"></a>协程怎么用？</h4><p>一个简单的C#代码，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">IEnumerator LongComputation()</span><br><span class="line">&#123;</span><br><span class="line">    while(someCondition)</span><br><span class="line">    &#123;</span><br><span class="line">        /* 做一系列的工作 */</span><br><span class="line"> </span><br><span class="line">        // 在这里暂停然后在下一帧继续执行</span><br><span class="line">        yield return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="协程是怎么工作的"><a href="#协程是怎么工作的" class="headerlink" title="协程是怎么工作的"></a>协程是怎么工作的</h4><p>注意上边的代码示例，你会发现一个协程函数的返回值是<strong>IEnumerator，它是一个迭代器，你可以把它当成指向一个序列的某个节点的指针 </strong>。它提供了两个重要的接口，分别是<strong>Current（返回当前指向的元素）和MoveNext()（将指针向前移动一个单位，如果移动成功，则返回true）</strong>。</p>
+<h4 id="协程怎么用？"><a href="#协程怎么用？" class="headerlink" title="协程怎么用？"></a>协程怎么用？</h4><p>一个简单的C#代码，如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">LongComputation</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(someCondition)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* 做一系列的工作 */</span></span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 在这里暂停然后在下一帧继续执行</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="协程是怎么工作的"><a href="#协程是怎么工作的" class="headerlink" title="协程是怎么工作的"></a>协程是怎么工作的</h4><p>注意上边的代码示例，你会发现一个协程函数的返回值是<strong>IEnumerator，它是一个迭代器，你可以把它当成指向一个序列的某个节点的指针 **。它提供了两个重要的接口，分别是</strong>Current（返回当前指向的元素）和MoveNext()（将指针向前移动一个单位，如果移动成功，则返回true）**。</p>
 <p>通常，如果你想实现一个接口，你可以写一个类，实现成员，等等。  迭代器块（iterator block） 是一个方便的方式实现IEnumerator没有任何麻烦-你只是遵循一些规则，并实现IEnumerator由编译器自动生成。 </p>
 <h5 id="一个迭代器块具备如下特征："><a href="#一个迭代器块具备如下特征：" class="headerlink" title="一个迭代器块具备如下特征："></a>一个迭代器块具备如下特征：</h5><ol>
 <li>返回IEnumerator</li>
@@ -264,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://dead-rabbit.github.io/2019/05/09/协程相关学习/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://dead-rabbit.github.io/2019/05/09/%E5%8D%8F%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -278,7 +279,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/16/单张纹理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/16/%E5%8D%95%E5%BC%A0%E7%BA%B9%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -288,7 +289,7 @@
     </a>
   
   
-    <a href="/2019/05/08/任务系统相关学习/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/05/08/%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">任务系统相关学习</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -413,6 +414,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">着色器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">纹理</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
