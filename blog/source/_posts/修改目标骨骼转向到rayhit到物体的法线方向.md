@@ -26,4 +26,4 @@ if (Physics.Raycast(ray, out hit, collisionMaxDistance)) {
 
 SetBoneLocalRotation在试验后得到的结论：只能在OnAnimatorIK中使用
 
-![](http://www.upcknox.com/wp-content/uploads/2020/02/微信截图_20200228100152.png)
+![](修改目标骨骼转向到rayhit到物体的法线方向/微信截图_20200228100152.png)

@@ -7,7 +7,7 @@ categories:
 date: 2019-09-25 12:07:17
 ---
 
-![](http://www.upcknox.com/wp-content/uploads/2019/09/微信图片_20190925120223.png)
+![](collider2d中心点位置/微信图片_20190925120223.png)
 
 获取四点+中心位置
 

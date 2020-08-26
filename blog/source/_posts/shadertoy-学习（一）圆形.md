@@ -9,7 +9,7 @@ date: 2019-07-25 11:18:06
 
 学习自 [Shader与ShaderToy学习 - 画一个圆](https://blog.csdn.net/ssssssilver/article/details/81129441)
 
-![](http://www.upcknox.com/wp-content/uploads/2019/07/微信截图_20190725111453-1024x351.png)
+![](shadertoy-学习（一）圆形/微信截图_20190725111453-1024x351.png)
 
 [](https://www.shadertoy.com/view/3tXSDB)[](https://www.shadertoy.com/view/3tXSDB)[https://www.shadertoy.com/view/3tXSDB](https://www.shadertoy.com/view/3tXSDB)[](https://www.shadertoy.com/view/3tXSDB)
 

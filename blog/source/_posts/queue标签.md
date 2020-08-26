@@ -19,4 +19,4 @@ from [瞎聊 Unity Shader 系列之七：究竟谁先被渲染？](http://blog.s
 *   **Transparent：** 对应的数值为 3000， 用于需要使用 alpha blending 的对象，比如粒子，玻璃等
 *   **Overlay：** 对应的数值为 4000，用于最后被渲染的对象，比如 UI
 
-![](http://www.upcknox.com/wp-content/uploads/2019/09/queue.png)
+![](queue标签/queue.png)

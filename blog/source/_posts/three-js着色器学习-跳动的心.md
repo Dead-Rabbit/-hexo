@@ -54,7 +54,7 @@ float smoothstep(float a, float b, float x)
 
 > **clamp(T x, float minValue, float mzxValue)** \- 返回的value介于A、B之间，若value小于min，返回min，若大于max，返回max
 
-![](http://www.upcknox.com/wp-content/uploads/2019/07/微信截图_20190715153241.png)
+![](three-js着色器学习-跳动的心/微信截图_20190715153241.png)
 
 clamp函数
 
@@ -62,7 +62,7 @@ clamp函数
 
 > **mod(T x, T y)** - 取模，可以看作是取余数
 
-![](http://www.upcknox.com/wp-content/uploads/2019/07/微信截图_20190715153241-1.png)
+![](three-js着色器学习-跳动的心/微信截图_20190715153241-1.png)
 
 函数 mod(x, y)/y 的图像
 

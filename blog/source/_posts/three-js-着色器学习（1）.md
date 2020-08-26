@@ -298,6 +298,6 @@ threejs使用的是webgl的 GLSL ES来完成的着色器，也就造成了一些
 > 
 > 如果x < edge，返回0.0，否则返回1.0
 
-![](http://www.upcknox.com/wp-content/uploads/2019/07/微信截图_20190708162147.png)
+![](three-js-着色器学习（1）/微信截图_20190708162147.png)
 
 可以由上图看出，砖块的大小只会和BrickSize的x和y有关，BrickPct只是用来控制砖块和泥土的比例的，BrickPct.x = 0.9 时，代表 砖块的x方向长度和泥土x方向长度的比例为9:1

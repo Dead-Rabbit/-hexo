@@ -11,7 +11,7 @@ date: 2020-03-14 11:01:46
 
 且Composite的Geometry Type需要修改为Polygons
 
-![](http://www.upcknox.com/wp-content/uploads/2020/03/微信截图_20200314110038.png)
+![](tilemapcollider2dcompositecollider的点击检测/微信截图_20200314110038.png)
 
 ```
 Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

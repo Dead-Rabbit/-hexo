@@ -9,4 +9,4 @@ date: 2019-08-18 11:55:48
 
 [http://www.upcknox.com/games/pointlight/](http://www.upcknox.com/games/pointlight/)
 
-![](http://www.upcknox.com/wp-content/uploads/2019/08/WX20190818-115511.png)
+![](pointlight-unity/WX20190818-115511.png)
