@@ -29,7 +29,6 @@ The following example shows a simplified system that illustrates（说明了） 
 
 This simplified example does not maintain any state within the system. One purpose for system state components is to track when persistent resources need to be allocated or cleaned up.（这个简单的例子不维护系统内的任何状态。系统状态组件的一个目的是追踪需要`分配`或`清理`的资源）
 
-```
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
@@ -47,38 +46,38 @@ public struct StateComponentB : ISystemStateComponentData
 
 public class StatefulSystem : JobComponentSystem
 {
-    private EntityQuery m_newEntities;
-    private EntityQuery m_activeEntities;
-    private EntityQuery m_destroyedEntities;
-    private EntityCommandBufferSystem m_ECBSource;
+    private EntityQuery m\_newEntities;
+    private EntityQuery m\_activeEntities;
+    private EntityQuery m\_destroyedEntities;
+    private EntityCommandBufferSystem m\_ECBSource;
 
     protected override void OnCreate()
     {
         // Entities with GeneralPurposeComponentA but not StateComponentB
-        m_newEntities = GetEntityQuery(new EntityQueryDesc()
+        m\_newEntities = GetEntityQuery(new EntityQueryDesc()
         {
-            All = new ComponentType[] {ComponentType.ReadOnly<GeneralPurposeComponentA>()},
-            None = new ComponentType[] {ComponentType.ReadWrite<StateComponentB>()}
+            All = new ComponentType\[\] {ComponentType.ReadOnly<GeneralPurposeComponentA>()},
+            None = new ComponentType\[\] {ComponentType.ReadWrite<StateComponentB>()}
         });
-    
+
         // Entities with both GeneralPurposeComponentA and StateComponentB
-        m_activeEntities = GetEntityQuery(new EntityQueryDesc()
+        m\_activeEntities = GetEntityQuery(new EntityQueryDesc()
         {
-            All = new ComponentType[]
+            All = new ComponentType\[\]
             {
                 ComponentType.ReadWrite<GeneralPurposeComponentA>(),
                 ComponentType.ReadOnly<StateComponentB>()
             }
         });
-    
+
         // Entities with StateComponentB but not GeneralPurposeComponentA
-        m_destroyedEntities = GetEntityQuery(new EntityQueryDesc()
+        m\_destroyedEntities = GetEntityQuery(new EntityQueryDesc()
         {
-            All = new ComponentType[] {ComponentType.ReadWrite<StateComponentB>()},
-            None = new ComponentType[] {ComponentType.ReadOnly<GeneralPurposeComponentA>()}
+            All = new ComponentType\[\] {ComponentType.ReadWrite<StateComponentB>()},
+            None = new ComponentType\[\] {ComponentType.ReadOnly<GeneralPurposeComponentA>()}
         });
-    
-        m_ECBSource = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+
+        m\_ECBSource = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
 #pragma warning disable 618
@@ -86,17 +85,17 @@ public class StatefulSystem : JobComponentSystem
     {
         public EntityCommandBuffer.Concurrent ConcurrentECB;
 
-        public void Execute(Entity entity, int jobIndex, [ReadOnly] ref GeneralPurposeComponentA gpA)
+        public void Execute(Entity entity, int jobIndex, \[ReadOnly\] ref GeneralPurposeComponentA gpA)
         {
             // Add an ISystemStateComponentData instance
             ConcurrentECB.AddComponent<StateComponentB>(jobIndex, entity, new StateComponentB() {State = 1});
         }
     }
-    
+
     struct ProcessEntityJob : IJobForEachWithEntity<GeneralPurposeComponentA>
     {
         public EntityCommandBuffer.Concurrent ConcurrentECB;
-    
+
         public void Execute(Entity entity, int jobIndex, ref GeneralPurposeComponentA gpA)
         {
             // Process entity, possibly setting IsAlive false --
@@ -107,12 +106,12 @@ public class StatefulSystem : JobComponentSystem
             }
         }
     }
-    
+
     struct CleanupEntityJob : IJobForEachWithEntity<StateComponentB>
     {
         public EntityCommandBuffer.Concurrent ConcurrentECB;
-    
-        public void Execute(Entity entity, int jobIndex, [ReadOnly] ref StateComponentB state)
+
+        public void Execute(Entity entity, int jobIndex, \[ReadOnly\] ref StateComponentB state)
         {
             // This system is responsible for removing any ISystemStateComponentData instances it adds
             // Otherwise, the entity is never truly destroyed.
@@ -125,31 +124,29 @@ public class StatefulSystem : JobComponentSystem
     {
         var newEntityJob = new NewEntityJob()
         {
-            ConcurrentECB = m_ECBSource.CreateCommandBuffer().ToConcurrent()
+            ConcurrentECB = m\_ECBSource.CreateCommandBuffer().ToConcurrent()
         };
-        var newJobHandle = newEntityJob.ScheduleSingle(m_newEntities, inputDependencies);
-        m_ECBSource.AddJobHandleForProducer(newJobHandle);
-    
+        var newJobHandle = newEntityJob.ScheduleSingle(m\_newEntities, inputDependencies);
+        m\_ECBSource.AddJobHandleForProducer(newJobHandle);
+
         var processEntityJob = new ProcessEntityJob()
-        {ConcurrentECB = m_ECBSource.CreateCommandBuffer().ToConcurrent()};
-        var processJobHandle = processEntityJob.Schedule(m_activeEntities, newJobHandle);
-        m_ECBSource.AddJobHandleForProducer(processJobHandle);
-    
+        {ConcurrentECB = m\_ECBSource.CreateCommandBuffer().ToConcurrent()};
+        var processJobHandle = processEntityJob.Schedule(m\_activeEntities, newJobHandle);
+        m\_ECBSource.AddJobHandleForProducer(processJobHandle);
+
         var cleanupEntityJob = new CleanupEntityJob()
         {
-            ConcurrentECB = m_ECBSource.CreateCommandBuffer().ToConcurrent()
+            ConcurrentECB = m\_ECBSource.CreateCommandBuffer().ToConcurrent()
         };
-        var cleanupJobHandle = cleanupEntityJob.ScheduleSingle(m_destroyedEntities, processJobHandle);
-        m_ECBSource.AddJobHandleForProducer(cleanupJobHandle);
-    
+        var cleanupJobHandle = cleanupEntityJob.ScheduleSingle(m\_destroyedEntities, processJobHandle);
+        m\_ECBSource.AddJobHandleForProducer(cleanupJobHandle);
+
         return cleanupJobHandle;
     }
-    
+
     protected override void OnDestroy()
     {
         // Implement OnDestroy to cleanup any resources allocated by this system.
         // (This simplified example does not allocate any resources.)
     }
 }
-
-```
