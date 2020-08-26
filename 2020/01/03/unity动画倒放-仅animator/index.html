@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="红黑兔子头">
 <meta property="og:description" content="该方法需要配合Unity的Animator中的Transition来完成 在这个例子中，我是通过 继承了StateMachineBehaviour的类中的OnStateEnter方法中完成的 首先在Unity的Animator中选中目标Animation，出现如下图所示的变量，按照红框内标记的内容勾选并填入  写入后，在需要设置成为倒放的地方添加animator.SetFloat(“PlaySpe">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://dead-rabbit.github.io/2020/01/03/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103164448.png">
-<meta property="og:image" content="http://dead-rabbit.github.io/2020/01/03/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103165734.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2020/01/03/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103164448.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2020/01/03/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103165734.png">
 <meta property="article:published_time" content="2020-01-03T08:59:36.000Z">
-<meta property="article:modified_time" content="2020-08-24T02:53:59.604Z">
+<meta property="article:modified_time" content="2020-08-26T03:19:05.757Z">
 <meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://dead-rabbit.github.io/2020/01/03/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103164448.png">
+<meta name="twitter:image" content="http://dead-rabbit.github.io/2020/01/03/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103164448.png">
   
     <link rel="alternative" href="/atom.xml" title="红黑兔子头" type="application/atom+xml">
   
@@ -180,37 +180,16 @@
         <p>该方法需要配合Unity的Animator中的Transition来完成</p>
 <p>在这个例子中，我是通过 继承了StateMachineBehaviour的类中的OnStateEnter方法中完成的</p>
 <p>首先在Unity的Animator中选中目标Animation，出现如下图所示的变量，按照红框内标记的内容勾选并填入</p>
-<p><img src="unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103164448.png"></p>
+<p><img src="/2020/01/03/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103164448.png"></p>
 <p>写入后，在需要设置成为倒放的地方添加animator.SetFloat(“PlaySpeed”, -1);即可，这里的PlaySpeed （变量名称随便） 可以视为调节速度的参数，在原有的基础上与PlaySpeed相乘。</p>
 <p>【重点】此处为我的个人项目中遇到的问题，可能根据此方法大多会触发这个事件。</p>
 <p>当对应的.anim文件（也就是在文件夹中的Animation文件）的LoopTime选项为无的时候，会发生<strong>倒放的动画卡在第一帧</strong>，我的猜想是，当前播放的正常顺序应该是（假设Animation的播放时间为3.2）3.2 =&gt; 0，也就是从最后一帧到第一帧，我的脚本中设置播放PlaySpeed的位置为StateEnter，此时的动画已经播放到第一帧，系统识别已经到达最终目标，而且Animation没有选择Loop，所以会卡在“执行完毕”的情景下。所以根据这个猜想，应该是<strong>在调用倒放之前，使进入该动画的位置变为最后一帧</strong>，为了解决这个我尝试使用“在脚本中将animator强行跳到最后一帧的位置上”，但始终没有找到解决方法，最后是通过<strong>在Unity的Animator界面中，调节相应的Transition（前一个Animation到当前Animation的那一支），调节内容如下所示</strong></p>
-<p><img src="unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103165734.png"></p>
+<p><img src="/2020/01/03/unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103165734.png"></p>
 <p>将需要执行的动画放在前面</p>
 <p>这样设置，就可以了~</p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -321,6 +300,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>

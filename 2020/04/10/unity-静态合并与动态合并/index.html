@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="红黑兔子头">
 <meta property="og:description" content="文章： Unity__静态合批与动态合批 draw call是openGL的描绘次数（directX没怎么研究，但原理应该差不多）一个简单的openGL的绘图次序是：设置颜色→绘图方式→顶点座标→绘制→结束。每帧都会重复以上的步骤。这就是一次draw call   如果有两个model，那么需要  设置颜色→绘图方式→顶点座标A→绘制→结束。设置颜色→绘图方式→顶点座标B→绘制→结束。两次draw">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://dead-rabbit.github.io/2020/04/10/unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/20130905093854640.jpg">
+<meta property="og:image" content="http://dead-rabbit.github.io/2020/04/10/unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/20130905093854640.jpg">
 <meta property="article:published_time" content="2020-04-10T07:04:00.000Z">
-<meta property="article:modified_time" content="2020-08-24T02:53:59.600Z">
+<meta property="article:modified_time" content="2020-08-26T03:19:05.753Z">
 <meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://dead-rabbit.github.io/2020/04/10/unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/20130905093854640.jpg">
+<meta name="twitter:image" content="http://dead-rabbit.github.io/2020/04/10/unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/20130905093854640.jpg">
   
     <link rel="alternative" href="/atom.xml" title="红黑兔子头" type="application/atom+xml">
   
@@ -211,33 +211,12 @@
 <p><strong>静态批处理</strong></p>
 <p>相对而言，静态批处理操作允许引擎对任意大小的几何物体进行批处理操作来降低绘制调用（只要这些物体不移动，并且拥有相同的材质）。因此，静态批处理比动态批处理更加有效，你应该尽量使用它，因为它需要更少的CPU开销。</p>
 <p>为了更好地使用静态批处理，你需要明确指出哪些物体是静止的，并且在游戏中永远不会移动、旋转和缩放。想完成这一步，你只需要在检测器（Inspector）中将Static复选框打勾即可，如下图所示：</p>
-<p><img src="unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/20130905093854640.jpg"></p>
+<p><img src="/2020/04/10/unity-%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E4%B8%8E%E5%8A%A8%E6%80%81%E5%90%88%E5%B9%B6/20130905093854640.jpg"></p>
 <p><strong>使用静态批处理操作需要额外的内存开销来储存合并后的几何数据</strong>。在静态批处理之前，如果一些物体共用了同样的几何数据，那么引擎会在编辑以及运行状态对每个物体创建一个几何数据的备份。这并不总是一个好的想法，因为有时候，你将不得不牺牲一点渲染性能来防止一些物体的静态批处理，从而保持较少的内存开销。比如，将浓密森里中树设为Static，会导致严重的内存开销。</p>
 <p><strong>静态批处理目前只支持Unity iOS Advanced。</strong></p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -348,6 +327,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>

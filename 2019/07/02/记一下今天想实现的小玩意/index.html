@@ -15,17 +15,17 @@
 <meta property="og:site_name" content="红黑兔子头">
 <meta property="og:description" content="three.js 实现网页换装的效果 未完成 继续搞shader，能实现像素画物体，可以根据光照位置不同，阴影位置不同（这是最想实现的内容） 已完成 - 阴影位置有待提高 shader实现一个赛博朋克风的场景    想实现的效果 - 人物肌肉颜色等  今天看到了一个课程 Unity TechArtist Shader课程 有两个效果很想实现  “风格化效果” - 像素风  个人实现内容 http">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190708162437-1.png">
-<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/WX20190905-145809@2x-1024x188.png">
-<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/noise_fire_smil.gif">
-<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/WX20190905-145828@2x-1024x383.png">
-<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/GIF.gif">
-<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/DzxljVMXcAACt9w.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190708162437-1.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/WX20190905-145809@2x-1024x188.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/noise_fire_smil.gif">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/WX20190905-145828@2x-1024x383.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/GIF.gif">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/DzxljVMXcAACt9w.png">
 <meta property="article:published_time" content="2019-07-02T04:00:14.000Z">
-<meta property="article:modified_time" content="2020-08-24T02:53:59.637Z">
+<meta property="article:modified_time" content="2020-08-26T03:19:05.794Z">
 <meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190708162437-1.png">
+<meta name="twitter:image" content="http://dead-rabbit.github.io/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190708162437-1.png">
   
     <link rel="alternative" href="/atom.xml" title="红黑兔子头" type="application/atom+xml">
   
@@ -187,49 +187,28 @@
 <li>shader实现一个赛博朋克风的场景</li>
 </ul>
 <hr>
-<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190708162437-1.png"></p>
+<p><img src="/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190708162437-1.png"></p>
 <p>想实现的效果 - 人物肌肉颜色等</p>
 <hr>
 <p>今天看到了一个课程 <a target="_blank" rel="noopener" href="https://www.biubiuiu.com/thread-10107-1-1.html">Unity TechArtist Shader课程</a></p>
 <p>有两个效果很想实现</p>
-<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/WX20190905-145809@2x-1024x188.png"></p>
+<p><img src="/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/WX20190905-145809@2x-1024x188.png"></p>
 <p>“风格化效果” - 像素风</p>
 <blockquote>
 <p>个人实现内容</p>
 <p><a target="_blank" rel="noopener" href="http://www.upcknox.com/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/">http://www.upcknox.com/2019/09/08/unity-图片毛边问题/</a></p>
 </blockquote>
-<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/noise_fire_smil.gif"></p>
+<p><img src="/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/noise_fire_smil.gif"></p>
 <hr>
-<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/WX20190905-145828@2x-1024x383.png"></p>
+<p><img src="/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/WX20190905-145828@2x-1024x383.png"></p>
 <p>爆炸效果 - 用到了噪音内容</p>
 <hr>
-<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/GIF.gif"></p>
+<p><img src="/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/GIF.gif"></p>
 <hr>
-<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/DzxljVMXcAACt9w.png"></p>
+<p><img src="/2019/07/02/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/DzxljVMXcAACt9w.png"></p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -344,6 +323,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>

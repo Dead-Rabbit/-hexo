@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="红黑兔子头">
 <meta property="og:description" content="参考 [ExecuteInEditMode] - 讓 Unity 在編輯模式中也能夠執行腳本 Unity共同材质设置不同参数  写unity2d项目的时候遇到了一个问题，自己写了一个拥有法线贴图的shader，放置在一个材质中，现在有很多obj需要用到这个材质，但是不同的obj需要不同的法线纹理，共同的材质只能赋予同一个法线纹理。 目前找到的方法是，写一个脚本，通过脚本修改当前obj的法线纹理，在">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://dead-rabbit.github.io/2019/08/19/unity-%E7%9B%B8%E5%90%8C%E6%9D%90%E8%B4%A8%E4%B8%8D%E5%90%8C%E5%8F%82%E6%95%B0/unity-%E7%9B%B8%E5%90%8C%E6%9D%90%E8%B4%A8%E4%B8%8D%E5%90%8C%E5%8F%82%E6%95%B0/WX20190819-115922@2x.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/08/19/unity-%E7%9B%B8%E5%90%8C%E6%9D%90%E8%B4%A8%E4%B8%8D%E5%90%8C%E5%8F%82%E6%95%B0/WX20190819-115922@2x.png">
 <meta property="article:published_time" content="2019-08-19T04:01:09.000Z">
-<meta property="article:modified_time" content="2020-08-24T02:53:59.599Z">
+<meta property="article:modified_time" content="2020-08-26T03:19:05.752Z">
 <meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://dead-rabbit.github.io/2019/08/19/unity-%E7%9B%B8%E5%90%8C%E6%9D%90%E8%B4%A8%E4%B8%8D%E5%90%8C%E5%8F%82%E6%95%B0/unity-%E7%9B%B8%E5%90%8C%E6%9D%90%E8%B4%A8%E4%B8%8D%E5%90%8C%E5%8F%82%E6%95%B0/WX20190819-115922@2x.png">
+<meta name="twitter:image" content="http://dead-rabbit.github.io/2019/08/19/unity-%E7%9B%B8%E5%90%8C%E6%9D%90%E8%B4%A8%E4%B8%8D%E5%90%8C%E5%8F%82%E6%95%B0/WX20190819-115922@2x.png">
   
     <link rel="alternative" href="/atom.xml" title="红黑兔子头" type="application/atom+xml">
   
@@ -177,7 +177,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>参考 <a target="_blank" rel="noopener" href="http://gn02214231.pixnet.net/blog/post/199606501-%e5%a6%82%e4%bd%95%e8%ae%93-unity-%e5%9c%a8%e7%b7%a8%e8%bc%af%e6%a8%a1%e5%bc%8f%e4%b8%ad%e4%b9%9f%e8%83%bd%e5%a4%a0%e5%9f%b7%e8%a1%8c%e8%85%b3%e6%9c%ac">[ExecuteInEditMode] - 讓 Unity 在編輯模式中也能夠執行腳本</a> <a target="_blank" rel="noopener" href="https://blog.csdn.net/leemu0822/article/details/83823040">Unity共同材质设置不同参数</a></p>
-<p><img src="unity-%E7%9B%B8%E5%90%8C%E6%9D%90%E8%B4%A8%E4%B8%8D%E5%90%8C%E5%8F%82%E6%95%B0/WX20190819-115922@2x.png"></p>
+<p><img src="/2019/08/19/unity-%E7%9B%B8%E5%90%8C%E6%9D%90%E8%B4%A8%E4%B8%8D%E5%90%8C%E5%8F%82%E6%95%B0/WX20190819-115922@2x.png"></p>
 <p>写unity2d项目的时候遇到了一个问题，自己写了一个拥有法线贴图的shader，放置在一个材质中，现在有很多obj需要用到这个材质，但是不同的obj需要不同的法线纹理，共同的材质只能赋予同一个法线纹理。</p>
 <p>目前找到的方法是，写一个脚本，通过脚本修改当前obj的法线纹理，在程序运行初期修改发线贴图，程序如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">[ExecuteInEditMode]</span><br><span class="line">public class MaterialHelper : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public Texture normalTexture;</span><br><span class="line"></span><br><span class="line">    private Renderer renderer;</span><br><span class="line">    private bool changed &#x3D; false;</span><br><span class="line">    </span><br><span class="line">    public void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (changed) return;</span><br><span class="line">        </span><br><span class="line">        renderer &#x3D; GetComponent&lt;Renderer&gt;();</span><br><span class="line">        if (normalTexture &#x3D;&#x3D; null || renderer &#x3D;&#x3D; null) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        renderer.material.SetTexture(&quot;_BumpMap&quot;, normalTexture);</span><br><span class="line">        changed &#x3D; true;</span><br><span class="line">        Debug.Log(&quot;set map&quot;, normalTexture);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -186,27 +186,6 @@
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -317,6 +296,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>

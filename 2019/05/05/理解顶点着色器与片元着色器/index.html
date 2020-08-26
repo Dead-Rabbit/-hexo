@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="红黑兔子头">
 <meta property="og:description" content="以下内容来自《Unity Shader入门精要》作为shader编程的核心，需要重点复习一下。要理解这两个着色器，还要从GPU的渲染说起。     概览1. 顶点着色器 Vertex顶点着色器的输入来自CPU，本身不可以创建或者销毁任何顶点，而且无法得到定点与顶点之间的关系，例如我们无法知道两个顶点是否属于同一个三角网络。但正是因为这样的相互独立性，GPU可以利用本身的特性并行化处理每一个顶点，这">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://dead-rabbit.github.io/2019/05/05/%E7%90%86%E8%A7%A3%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E4%B8%8E%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/%E7%90%86%E8%A7%A3%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E4%B8%8E%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/GPUliucheng.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/05/05/%E7%90%86%E8%A7%A3%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E4%B8%8E%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/GPUliucheng.png">
 <meta property="article:published_time" content="2019-05-05T08:12:09.000Z">
-<meta property="article:modified_time" content="2020-08-24T02:53:59.631Z">
+<meta property="article:modified_time" content="2020-08-26T03:19:05.788Z">
 <meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://dead-rabbit.github.io/2019/05/05/%E7%90%86%E8%A7%A3%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E4%B8%8E%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/%E7%90%86%E8%A7%A3%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E4%B8%8E%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/GPUliucheng.png">
+<meta name="twitter:image" content="http://dead-rabbit.github.io/2019/05/05/%E7%90%86%E8%A7%A3%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E4%B8%8E%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/GPUliucheng.png">
   
     <link rel="alternative" href="/atom.xml" title="红黑兔子头" type="application/atom+xml">
   
@@ -178,7 +178,7 @@
       
         <p>以下内容来自<strong>《Unity Shader入门精要》</strong><br>作为shader编程的核心，需要重点复习一下。要理解这两个着色器，还要从GPU的渲染说起。</p>
 <blockquote>
-<p><img src="%E7%90%86%E8%A7%A3%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E4%B8%8E%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/GPUliucheng.png" alt="GPU渲染流程"></p>
+<p><img src="/2019/05/05/%E7%90%86%E8%A7%A3%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E4%B8%8E%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8/GPUliucheng.png" alt="GPU渲染流程"></p>
 </blockquote>
 <hr>
 <h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><h4 id="1-顶点着色器-Vertex"><a href="#1-顶点着色器-Vertex" class="headerlink" title="1. 顶点着色器 Vertex"></a>1. 顶点着色器 Vertex</h4><p>顶点着色器的输入来自CPU，本身不可以创建或者销毁任何顶点，而且<strong>无法得到定点与顶点之间的关系</strong>，例如我们无法知道两个顶点是否属于同一个三角网络。但正是因为这样的相互独立性，GPU可以利用本身的特性<strong>并行化处理每一个顶点</strong>，这意味着这一阶段的处理速度会很快。<br>顶点着色器主要完成的工作有：坐标变换和驻点光照</p>
@@ -195,27 +195,6 @@
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -315,6 +294,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">概览</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8-Vertex"><span class="toc-number">1.1.</span> <span class="toc-text">1. 顶点着色器 Vertex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A3%81%E5%89%AA"><span class="toc-number">1.2.</span> <span class="toc-text">2. 裁剪</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%B1%8F%E5%B9%95%E6%98%A0%E5%B0%84"><span class="toc-number">1.3.</span> <span class="toc-text">3. 屏幕映射</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%B8%89%E8%A7%92%E5%BD%A2%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">4. 三角形设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%89%E8%A7%92%E5%BD%A2%E9%81%8D%E5%8E%86"><span class="toc-number">1.5.</span> <span class="toc-text">5. 三角形遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8-Fragment"><span class="toc-number">1.6.</span> <span class="toc-text">6. 片元着色器 Fragment</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E9%80%90%E7%89%87%E5%85%83%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.</span> <span class="toc-text">7. 逐片元操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8%E5%92%8C%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="toc-number">2.1.</span> <span class="toc-text">1. 顶点着色器和片元着色器的通信</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
