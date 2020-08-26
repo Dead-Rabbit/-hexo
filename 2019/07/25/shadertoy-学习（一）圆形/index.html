@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="红黑兔子头">
 <meta property="og:description" content="学习自 Shader与ShaderToy学习 - 画一个圆  https:&#x2F;&#x2F;www.shadertoy.com&#x2F;view&#x2F;3tXSDB &#x2F;&#x2F;输入参数(当前点位置，中心点位置，点的半径，颜色，与背景过渡的平滑值)vec4 cicle(vec2 pos,vec2 center,float radius,vec3 col,float antialias){    &#x2F;&#x2F;求圆心距离    float d">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.upcknox.com/wp-content/uploads/2019/07/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190725111453-1024x351.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/07/25/shadertoy-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9C%86%E5%BD%A2/shadertoy-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9C%86%E5%BD%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190725111453-1024x351.png">
 <meta property="article:published_time" content="2019-07-25T03:18:06.000Z">
-<meta property="article:modified_time" content="2020-08-22T08:53:48.508Z">
+<meta property="article:modified_time" content="2020-08-24T02:53:59.582Z">
 <meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.upcknox.com/wp-content/uploads/2019/07/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190725111453-1024x351.png">
+<meta name="twitter:image" content="http://dead-rabbit.github.io/2019/07/25/shadertoy-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9C%86%E5%BD%A2/shadertoy-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9C%86%E5%BD%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190725111453-1024x351.png">
   
     <link rel="alternative" href="/atom.xml" title="红黑兔子头" type="application/atom+xml">
   
@@ -177,7 +177,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>学习自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/ssssssilver/article/details/81129441">Shader与ShaderToy学习 - 画一个圆</a></p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/07/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190725111453-1024x351.png"></p>
+<p><img src="shadertoy-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9C%86%E5%BD%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190725111453-1024x351.png"></p>
 <p><a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tXSDB"></a><a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tXSDB"></a><a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tXSDB">https://www.shadertoy.com/view/3tXSDB</a><a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tXSDB"></a></p>
 <p>//输入参数(当前点位置，中心点位置，点的半径，颜色，与背景过渡的平滑值)<br>vec4 cicle(vec2 pos,vec2 center,float radius,vec3 col,float antialias){<br>    //求圆心距离<br>    float d = length(pos - center) - radius;<br>    //smoothstep(a,b,t)函数 t&lt;a return a, t&gt;b return b<br>    float t = smoothstep(0.0, antialias, d);<br>    return vec4(col, 1.0-t);<br>}<br>void mainImage(out vec4 fragColor, in vec2 fragCoord )<br>{<br>    //获取点的位置<br>    //iResolution为屏幕的分辨率<br>    //fragCoord为当前点的位置 原点是左下角<br>    //返回的uv是以屏幕中心为原点<br>    vec2 uv =(2.0 * fragCoord.xy - iResolution.xy) / iResolution.y;<br>    //中心点<br>    vec2 point1 = vec2(0,0);<br>    //圆的颜色<br>    vec3 color=vec3(0.3,1,0);<br>    // layer1 cos函数<br>    vec3 temp = 0.5 + 0.5*cos(iTime+uv.xyx+vec3(0,2,4));<br>    vec4 layer1= vec4(temp,1);<br>    //layer2 平滑的圆<br>    vec4 layer2 = cicle(uv,point1,0.8,color,0.01);<br>    // 输出像素<br>    fragColor = mix(layer1, layer2, layer2.a);<br>}</p>
 <p>上面代码中，首先重点介绍一下 smoothstep 函数及其在当前例子中的应用。</p>

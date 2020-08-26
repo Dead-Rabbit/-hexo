@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="红黑兔子头">
 <meta property="og:description" content="今天要写一个火焰的效果，遇到了一个问题，当我制作其为像素画风格时，出现了格子问题，如下所示  在查找问题的时候，发现原图片上传后，边缘出现了毛边的情况，此时材质的配置如下  在查找是否为FilterMode问题的时候，看到了如下内容，同时记忆学习下 以下内容来自 Unity UGUI 图片模糊  这里Texture Type默认格式为Texture。这种纹理格式是3D物体最常用的纹理，不过UGUI">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.upcknox.com/wp-content/uploads/2019/09/QQ%E6%88%AA%E5%9B%BE20190908164519.png">
-<meta property="og:image" content="http://www.upcknox.com/wp-content/uploads/2019/09/QQ%E6%88%AA%E5%9B%BE20190908164637.png">
-<meta property="og:image" content="http://www.upcknox.com/wp-content/uploads/2019/09/QQ%E6%88%AA%E5%9B%BE20190908164811.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164519.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164637.png">
+<meta property="og:image" content="http://dead-rabbit.github.io/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164811.png">
 <meta property="article:published_time" content="2019-09-08T08:50:23.000Z">
-<meta property="article:modified_time" content="2020-08-22T08:53:48.539Z">
+<meta property="article:modified_time" content="2020-08-24T02:53:59.597Z">
 <meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.upcknox.com/wp-content/uploads/2019/09/QQ%E6%88%AA%E5%9B%BE20190908164519.png">
+<meta name="twitter:image" content="http://dead-rabbit.github.io/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164519.png">
   
     <link rel="alternative" href="/atom.xml" title="红黑兔子头" type="application/atom+xml">
   
@@ -179,9 +179,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天要写一个火焰的效果，遇到了一个问题，当我制作其为像素画风格时，出现了格子问题，如下所示</p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/QQ%E6%88%AA%E5%9B%BE20190908164519.png"></p>
+<p><img src="unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164519.png"></p>
 <p>在查找问题的时候，发现原图片上传后，边缘出现了毛边的情况，此时材质的配置如下</p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/QQ%E6%88%AA%E5%9B%BE20190908164637.png"></p>
+<p><img src="unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164637.png"></p>
 <p>在查找是否为FilterMode问题的时候，看到了如下内容，同时记忆学习下</p>
 <p>以下内容来自 <strong><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f86700fbda7c">Unity UGUI 图片模糊</a></strong></p>
 <ul>
@@ -203,7 +203,7 @@
 </ul>
 <hr>
 <p>目前已通过修改材质的属性“解决”了问题，，修改TextureType为“Sprite”后貌似修复好了，仔细看还是有问题的：</p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/QQ%E6%88%AA%E5%9B%BE20190908164811.png"></p>
+<p><img src="unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164811.png"></p>
 <p>还是会存在部分描边情况，怀疑和程序有关</p>
 <p>Unity Package git 下载地址： <a target="_blank" rel="noopener" href="https://github.com/Dead-Rabbit/UnityFire">https://github.com/Dead-Rabbit/UnityFire</a></p>
 

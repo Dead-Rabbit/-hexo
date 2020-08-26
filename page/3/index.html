@@ -290,11 +290,11 @@
         <p>该方法需要配合Unity的Animator中的Transition来完成</p>
 <p>在这个例子中，我是通过 继承了StateMachineBehaviour的类中的OnStateEnter方法中完成的</p>
 <p>首先在Unity的Animator中选中目标Animation，出现如下图所示的变量，按照红框内标记的内容勾选并填入</p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2020/01/QQ%E6%88%AA%E5%9B%BE20200103164448.png"></p>
+<p><img src="unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103164448.png"></p>
 <p>写入后，在需要设置成为倒放的地方添加animator.SetFloat(“PlaySpeed”, -1);即可，这里的PlaySpeed （变量名称随便） 可以视为调节速度的参数，在原有的基础上与PlaySpeed相乘。</p>
 <p>【重点】此处为我的个人项目中遇到的问题，可能根据此方法大多会触发这个事件。</p>
 <p>当对应的.anim文件（也就是在文件夹中的Animation文件）的LoopTime选项为无的时候，会发生<strong>倒放的动画卡在第一帧</strong>，我的猜想是，当前播放的正常顺序应该是（假设Animation的播放时间为3.2）3.2 =&gt; 0，也就是从最后一帧到第一帧，我的脚本中设置播放PlaySpeed的位置为StateEnter，此时的动画已经播放到第一帧，系统识别已经到达最终目标，而且Animation没有选择Loop，所以会卡在“执行完毕”的情景下。所以根据这个猜想，应该是<strong>在调用倒放之前，使进入该动画的位置变为最后一帧</strong>，为了解决这个我尝试使用“在脚本中将animator强行跳到最后一帧的位置上”，但始终没有找到解决方法，最后是通过<strong>在Unity的Animator界面中，调节相应的Transition（前一个Animation到当前Animation的那一支），调节内容如下所示</strong></p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2020/01/QQ%E6%88%AA%E5%9B%BE20200103165734.png"></p>
+<p><img src="unity%E5%8A%A8%E7%94%BB%E5%80%92%E6%94%BE-%E4%BB%85animator/QQ%E6%88%AA%E5%9B%BE20200103165734.png"></p>
 <p>将需要执行的动画放在前面</p>
 <p>这样设置，就可以了~</p>
 
@@ -565,7 +565,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190925120223.png"></p>
+        <p><img src="collider2d%E4%B8%AD%E5%BF%83%E7%82%B9%E4%BD%8D%E7%BD%AE/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190925120223.png"></p>
 <p>获取四点+中心位置</p>
 <hr>
 <p>今天需要<strong>计算一个collider的四个顶点位置</strong>以及<strong>通过collider内置变量获取sprite中心点位置</strong></p>
@@ -731,9 +731,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>卷积核为： 以下内容<em>_Kernel值为2时</em></p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190912120258.png"></p>
+<p><img src="unity-%E5%99%AA%E9%9F%B3%E6%95%88%E6%9E%9C%E8%AE%B0%E5%BD%95/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190912120258.png"></p>
 <p>卷积核内容</p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/erode.gif"></p>
+<p><img src="unity-%E5%99%AA%E9%9F%B3%E6%95%88%E6%9E%9C%E8%AE%B0%E5%BD%95/erode.gif"></p>
 <p>内容来自《Shader入门精要》 - Texture内容为柏林噪音图</p>
 
       
@@ -820,7 +820,7 @@
 <li><strong>Transparent：</strong> 对应的数值为 3000， 用于需要使用 alpha blending 的对象，比如粒子，玻璃等</li>
 <li><strong>Overlay：</strong> 对应的数值为 4000，用于最后被渲染的对象，比如 UI</li>
 </ul>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/queue.png"></p>
+<p><img src="queue%E6%A0%87%E7%AD%BE/queue.png"></p>
 
       
 
@@ -895,9 +895,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天要写一个火焰的效果，遇到了一个问题，当我制作其为像素画风格时，出现了格子问题，如下所示</p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/QQ%E6%88%AA%E5%9B%BE20190908164519.png"></p>
+<p><img src="unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164519.png"></p>
 <p>在查找问题的时候，发现原图片上传后，边缘出现了毛边的情况，此时材质的配置如下</p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/QQ%E6%88%AA%E5%9B%BE20190908164637.png"></p>
+<p><img src="unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164637.png"></p>
 <p>在查找是否为FilterMode问题的时候，看到了如下内容，同时记忆学习下</p>
 <p>以下内容来自 <strong><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f86700fbda7c">Unity UGUI 图片模糊</a></strong></p>
 <ul>
@@ -919,7 +919,7 @@
 </ul>
 <hr>
 <p>目前已通过修改材质的属性“解决”了问题，，修改TextureType为“Sprite”后貌似修复好了，仔细看还是有问题的：</p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/QQ%E6%88%AA%E5%9B%BE20190908164811.png"></p>
+<p><img src="unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164811.png"></p>
 <p>还是会存在部分描边情况，怀疑和程序有关</p>
 <p>Unity Package git 下载地址： <a target="_blank" rel="noopener" href="https://github.com/Dead-Rabbit/UnityFire">https://github.com/Dead-Rabbit/UnityFire</a></p>
 
@@ -995,7 +995,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/glass_fire.gif"></p>
+        <p><img src="%E7%9D%80%E8%89%B2%E5%99%A8%E8%AE%B0%E5%BD%95-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C%EF%BC%9F/glass_fire.gif"></p>
 <p>火焰效果</p>
 <p>在程序中，修改uv坐标为：</p>
 <p>i.uv.x = i.uv.x - (_Size - fmod(i.uv.x, _Size)) + _Size / 2;<br>i.uv.y = i.uv.y - (_Size - fmod(i.uv.y, _Size)) + _Size / 2;</p>

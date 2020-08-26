@@ -16,7 +16,7 @@
 <meta property="og:description" content="System State Components ECS框架文档翻译六 System State Components_Andrew的游戏世界-CSDN博客 系统状态组件 的行为类似于普通组件或共享组件，但在销毁实体时，EntityManager不会删除任何系统状态组件，也不会回收实体ID，直到系统状态组件被删除。 这种行为差异允许系统在销毁实体时清理其内部状态或释放资源。 当实体被销毁时，Syst">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-31T09:20:53.000Z">
-<meta property="article:modified_time" content="2020-08-22T08:53:48.618Z">
+<meta property="article:modified_time" content="2020-08-26T02:17:52.489Z">
 <meta property="article:author" content="死兔子。">
 <meta name="twitter:card" content="summary">
   
@@ -190,104 +190,7 @@
 <li><code>m_destroyedEntities</code> selects entities that have the system state, but not the general-purpose component. Since the system state component is never added to an entity by itself, the entities that this query selects must have been deleted, either by this system or another system. The system reuses the destroyed entities query to run a job and remove the system state component from the entities, which allows the ECS code to recycle the entity identifier.</li>
 </ul>
 <p>This simplified example does not maintain any state within the system. One purpose for system state components is to track when persistent resources need to be allocated or cleaned up.（这个简单的例子不维护系统内的任何状态。系统状态组件的一个目的是追踪需要<code>分配</code>或<code>清理</code>的资源）</p>
-<p>using Unity.Collections;<br>using Unity.Entities;<br>using Unity.Jobs;<br>using UnityEngine;</p>
-<p>public struct GeneralPurposeComponentA : IComponentData<br>{<br>    public bool IsAlive;<br>}</p>
-<p>public struct StateComponentB : ISystemStateComponentData<br>{<br>    public int State;<br>}</p>
-<p>public class StatefulSystem : JobComponentSystem<br>{<br>    private EntityQuery m_newEntities;<br>    private EntityQuery m_activeEntities;<br>    private EntityQuery m_destroyedEntities;<br>    private EntityCommandBufferSystem m_ECBSource;</p>
-<pre><code>protected override void OnCreate()
-&#123;
-    // Entities with GeneralPurposeComponentA but not StateComponentB
-    m\_newEntities = GetEntityQuery(new EntityQueryDesc()
-    &#123;
-        All = new ComponentType\[\] &#123;ComponentType.ReadOnly&lt;GeneralPurposeComponentA&gt;()&#125;,
-        None = new ComponentType\[\] &#123;ComponentType.ReadWrite&lt;StateComponentB&gt;()&#125;
-    &#125;);
-
-    // Entities with both GeneralPurposeComponentA and StateComponentB
-    m\_activeEntities = GetEntityQuery(new EntityQueryDesc()
-    &#123;
-        All = new ComponentType\[\]
-        &#123;
-            ComponentType.ReadWrite&lt;GeneralPurposeComponentA&gt;(),
-            ComponentType.ReadOnly&lt;StateComponentB&gt;()
-        &#125;
-    &#125;);
-
-    // Entities with StateComponentB but not GeneralPurposeComponentA
-    m\_destroyedEntities = GetEntityQuery(new EntityQueryDesc()
-    &#123;
-        All = new ComponentType\[\] &#123;ComponentType.ReadWrite&lt;StateComponentB&gt;()&#125;,
-        None = new ComponentType\[\] &#123;ComponentType.ReadOnly&lt;GeneralPurposeComponentA&gt;()&#125;
-    &#125;);
-
-    m\_ECBSource = World.GetOrCreateSystem&lt;EndSimulationEntityCommandBufferSystem&gt;();
-&#125;</code></pre>
-<p>#pragma warning disable 618<br>    struct NewEntityJob : IJobForEachWithEntity<GeneralPurposeComponentA><br>    {<br>        public EntityCommandBuffer.Concurrent ConcurrentECB;</p>
-<pre><code>    public void Execute(Entity entity, int jobIndex, \[ReadOnly\] ref GeneralPurposeComponentA gpA)
-    &#123;
-        // Add an ISystemStateComponentData instance
-        ConcurrentECB.AddComponent&lt;StateComponentB&gt;(jobIndex, entity, new StateComponentB() &#123;State = 1&#125;);
-    &#125;
-&#125;
-
-struct ProcessEntityJob : IJobForEachWithEntity&lt;GeneralPurposeComponentA&gt;
-&#123;
-    public EntityCommandBuffer.Concurrent ConcurrentECB;
-
-    public void Execute(Entity entity, int jobIndex, ref GeneralPurposeComponentA gpA)
-    &#123;
-        // Process entity, possibly setting IsAlive false --
-        // In which case, destroy the entity
-        if (!gpA.IsAlive)
-        &#123;
-            ConcurrentECB.DestroyEntity(jobIndex, entity);
-        &#125;
-    &#125;
-&#125;
-
-struct CleanupEntityJob : IJobForEachWithEntity&lt;StateComponentB&gt;
-&#123;
-    public EntityCommandBuffer.Concurrent ConcurrentECB;
-
-    public void Execute(Entity entity, int jobIndex, \[ReadOnly\] ref StateComponentB state)
-    &#123;
-        // This system is responsible for removing any ISystemStateComponentData instances it adds
-        // Otherwise, the entity is never truly destroyed.
-        ConcurrentECB.RemoveComponent&lt;StateComponentB&gt;(jobIndex, entity);
-    &#125;
-&#125;</code></pre>
-<p>#pragma warning restore 618</p>
-<pre><code>protected override JobHandle OnUpdate(JobHandle inputDependencies)
-&#123;
-    var newEntityJob = new NewEntityJob()
-    &#123;
-        ConcurrentECB = m\_ECBSource.CreateCommandBuffer().ToConcurrent()
-    &#125;;
-    var newJobHandle = newEntityJob.ScheduleSingle(m\_newEntities, inputDependencies);
-    m\_ECBSource.AddJobHandleForProducer(newJobHandle);
-
-    var processEntityJob = new ProcessEntityJob()
-    &#123;ConcurrentECB = m\_ECBSource.CreateCommandBuffer().ToConcurrent()&#125;;
-    var processJobHandle = processEntityJob.Schedule(m\_activeEntities, newJobHandle);
-    m\_ECBSource.AddJobHandleForProducer(processJobHandle);
-
-    var cleanupEntityJob = new CleanupEntityJob()
-    &#123;
-        ConcurrentECB = m\_ECBSource.CreateCommandBuffer().ToConcurrent()
-    &#125;;
-    var cleanupJobHandle = cleanupEntityJob.ScheduleSingle(m\_destroyedEntities, processJobHandle);
-    m\_ECBSource.AddJobHandleForProducer(cleanupJobHandle);
-
-    return cleanupJobHandle;
-&#125;
-
-protected override void OnDestroy()
-&#123;
-    // Implement OnDestroy to cleanup any resources allocated by this system.
-    // (This simplified example does not allocate any resources.)
-&#125;</code></pre>
-<p>}</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line">using Unity.Collections;</span><br><span class="line">using Unity.Entities;</span><br><span class="line">using Unity.Jobs;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public struct GeneralPurposeComponentA : IComponentData</span><br><span class="line">&#123;</span><br><span class="line">    public bool IsAlive;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public struct StateComponentB : ISystemStateComponentData</span><br><span class="line">&#123;</span><br><span class="line">    public int State;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class StatefulSystem : JobComponentSystem</span><br><span class="line">&#123;</span><br><span class="line">    private EntityQuery m_newEntities;</span><br><span class="line">    private EntityQuery m_activeEntities;</span><br><span class="line">    private EntityQuery m_destroyedEntities;</span><br><span class="line">    private EntityCommandBufferSystem m_ECBSource;</span><br><span class="line"></span><br><span class="line">    protected override void OnCreate()</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F; Entities with GeneralPurposeComponentA but not StateComponentB</span><br><span class="line">        m_newEntities &#x3D; GetEntityQuery(new EntityQueryDesc()</span><br><span class="line">        &#123;</span><br><span class="line">            All &#x3D; new ComponentType[] &#123;ComponentType.ReadOnly&lt;GeneralPurposeComponentA&gt;()&#125;,</span><br><span class="line">            None &#x3D; new ComponentType[] &#123;ComponentType.ReadWrite&lt;StateComponentB&gt;()&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    </span><br><span class="line">        &#x2F;&#x2F; Entities with both GeneralPurposeComponentA and StateComponentB</span><br><span class="line">        m_activeEntities &#x3D; GetEntityQuery(new EntityQueryDesc()</span><br><span class="line">        &#123;</span><br><span class="line">            All &#x3D; new ComponentType[]</span><br><span class="line">            &#123;</span><br><span class="line">                ComponentType.ReadWrite&lt;GeneralPurposeComponentA&gt;(),</span><br><span class="line">                ComponentType.ReadOnly&lt;StateComponentB&gt;()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    </span><br><span class="line">        &#x2F;&#x2F; Entities with StateComponentB but not GeneralPurposeComponentA</span><br><span class="line">        m_destroyedEntities &#x3D; GetEntityQuery(new EntityQueryDesc()</span><br><span class="line">        &#123;</span><br><span class="line">            All &#x3D; new ComponentType[] &#123;ComponentType.ReadWrite&lt;StateComponentB&gt;()&#125;,</span><br><span class="line">            None &#x3D; new ComponentType[] &#123;ComponentType.ReadOnly&lt;GeneralPurposeComponentA&gt;()&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    </span><br><span class="line">        m_ECBSource &#x3D; World.GetOrCreateSystem&lt;EndSimulationEntityCommandBufferSystem&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">#pragma warning disable 618</span><br><span class="line">    struct NewEntityJob : IJobForEachWithEntity&lt;GeneralPurposeComponentA&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        public EntityCommandBuffer.Concurrent ConcurrentECB;</span><br><span class="line"></span><br><span class="line">        public void Execute(Entity entity, int jobIndex, [ReadOnly] ref GeneralPurposeComponentA gpA)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F; Add an ISystemStateComponentData instance</span><br><span class="line">            ConcurrentECB.AddComponent&lt;StateComponentB&gt;(jobIndex, entity, new StateComponentB() &#123;State &#x3D; 1&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    struct ProcessEntityJob : IJobForEachWithEntity&lt;GeneralPurposeComponentA&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        public EntityCommandBuffer.Concurrent ConcurrentECB;</span><br><span class="line">    </span><br><span class="line">        public void Execute(Entity entity, int jobIndex, ref GeneralPurposeComponentA gpA)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F; Process entity, possibly setting IsAlive false --</span><br><span class="line">            &#x2F;&#x2F; In which case, destroy the entity</span><br><span class="line">            if (!gpA.IsAlive)</span><br><span class="line">            &#123;</span><br><span class="line">                ConcurrentECB.DestroyEntity(jobIndex, entity);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    struct CleanupEntityJob : IJobForEachWithEntity&lt;StateComponentB&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        public EntityCommandBuffer.Concurrent ConcurrentECB;</span><br><span class="line">    </span><br><span class="line">        public void Execute(Entity entity, int jobIndex, [ReadOnly] ref StateComponentB state)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F; This system is responsible for removing any ISystemStateComponentData instances it adds</span><br><span class="line">            &#x2F;&#x2F; Otherwise, the entity is never truly destroyed.</span><br><span class="line">            ConcurrentECB.RemoveComponent&lt;StateComponentB&gt;(jobIndex, entity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">#pragma warning restore 618</span><br><span class="line"></span><br><span class="line">    protected override JobHandle OnUpdate(JobHandle inputDependencies)</span><br><span class="line">    &#123;</span><br><span class="line">        var newEntityJob &#x3D; new NewEntityJob()</span><br><span class="line">        &#123;</span><br><span class="line">            ConcurrentECB &#x3D; m_ECBSource.CreateCommandBuffer().ToConcurrent()</span><br><span class="line">        &#125;;</span><br><span class="line">        var newJobHandle &#x3D; newEntityJob.ScheduleSingle(m_newEntities, inputDependencies);</span><br><span class="line">        m_ECBSource.AddJobHandleForProducer(newJobHandle);</span><br><span class="line">    </span><br><span class="line">        var processEntityJob &#x3D; new ProcessEntityJob()</span><br><span class="line">        &#123;ConcurrentECB &#x3D; m_ECBSource.CreateCommandBuffer().ToConcurrent()&#125;;</span><br><span class="line">        var processJobHandle &#x3D; processEntityJob.Schedule(m_activeEntities, newJobHandle);</span><br><span class="line">        m_ECBSource.AddJobHandleForProducer(processJobHandle);</span><br><span class="line">    </span><br><span class="line">        var cleanupEntityJob &#x3D; new CleanupEntityJob()</span><br><span class="line">        &#123;</span><br><span class="line">            ConcurrentECB &#x3D; m_ECBSource.CreateCommandBuffer().ToConcurrent()</span><br><span class="line">        &#125;;</span><br><span class="line">        var cleanupJobHandle &#x3D; cleanupEntityJob.ScheduleSingle(m_destroyedEntities, processJobHandle);</span><br><span class="line">        m_ECBSource.AddJobHandleForProducer(cleanupJobHandle);</span><br><span class="line">    </span><br><span class="line">        return cleanupJobHandle;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    protected override void OnDestroy()</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F; Implement OnDestroy to cleanup any resources allocated by this system.</span><br><span class="line">        &#x2F;&#x2F; (This simplified example does not allocate any resources.)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
 
       

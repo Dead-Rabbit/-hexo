@@ -502,7 +502,7 @@ specular += gl\_LightSource\[i\].specular \* pf;</code></pre>
 <p><strong>既然得到的是垂直两个向量的向量，那方向怎么算呢？</strong></p>
 <p>通过将a的头与b的尾相接，并检查从a到b是顺时针还是逆时针，能确定$latex a \times b $ 的方向。<br>在<strong>左手坐标系</strong>中，如果a和b呈顺时针，那么$latex a \times b $ 指向您，如果a和b呈逆时针， $latex a \times b $ 远离您。在<strong>右手坐标系</strong>中，恰好相反，如果a和b呈顺时针， $latex a \times b $ 远离您，如果a和b呈逆时针， $latex a \times b $ 指向您</p>
 </blockquote>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/07/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190715153241-2-1024x361.png"></p>
+<p><img src="%E7%82%B9%E4%B9%98%E4%B8%8E%E5%8F%89%E4%B9%98/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190715153241-2-1024x361.png"></p>
 
       
 
@@ -758,13 +758,13 @@ specular += gl\_LightSource\[i\].specular \* pf;</code></pre>
 <blockquote>
 <p><strong>clamp(T x, float minValue, float mzxValue)</strong> - 返回的value介于A、B之间，若value小于min，返回min，若大于max，返回max</p>
 </blockquote>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/07/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190715153241.png"></p>
+<p><img src="three-js%E7%9D%80%E8%89%B2%E5%99%A8%E5%AD%A6%E4%B9%A0-%E8%B7%B3%E5%8A%A8%E7%9A%84%E5%BF%83/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190715153241.png"></p>
 <p>clamp函数</p>
 <hr>
 <blockquote>
 <p><strong>mod(T x, T y)</strong> - 取模，可以看作是取余数</p>
 </blockquote>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/07/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190715153241-1.png"></p>
+<p><img src="three-js%E7%9D%80%E8%89%B2%E5%99%A8%E5%AD%A6%E4%B9%A0-%E8%B7%B3%E5%8A%A8%E7%9A%84%E5%BF%83/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190715153241-1.png"></p>
 <p>函数 mod(x, y)/y 的图像</p>
 <hr>
 <blockquote>
@@ -1185,7 +1185,7 @@ specular += gl\_LightSource\[i\].specular \* pf;</code></pre>
 <p>genType step (genType edge, genType x)，genType step (float edge, genType x)</p>
 <p>如果x &lt; edge，返回0.0，否则返回1.0</p>
 </blockquote>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/07/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190708162147.png"></p>
+<p><img src="three-js-%E7%9D%80%E8%89%B2%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190708162147.png"></p>
 <p>可以由上图看出，砖块的大小只会和BrickSize的x和y有关，BrickPct只是用来控制砖块和泥土的比例的，BrickPct.x = 0.9 时，代表 砖块的x方向长度和泥土x方向长度的比例为9:1</p>
 
       
@@ -1266,25 +1266,25 @@ specular += gl\_LightSource\[i\].specular \* pf;</code></pre>
 <li>shader实现一个赛博朋克风的场景</li>
 </ul>
 <hr>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/07/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190708162437-1.png"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190708162437-1.png"></p>
 <p>想实现的效果 - 人物肌肉颜色等</p>
 <hr>
 <p>今天看到了一个课程 <a target="_blank" rel="noopener" href="https://www.biubiuiu.com/thread-10107-1-1.html">Unity TechArtist Shader课程</a></p>
 <p>有两个效果很想实现</p>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/WX20190905-145809@2x-1024x188.png"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/WX20190905-145809@2x-1024x188.png"></p>
 <p>“风格化效果” - 像素风</p>
 <blockquote>
 <p>个人实现内容</p>
 <p><a target="_blank" rel="noopener" href="http://www.upcknox.com/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/">http://www.upcknox.com/2019/09/08/unity-图片毛边问题/</a></p>
 </blockquote>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/noise_fire_smil.gif"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/noise_fire_smil.gif"></p>
 <hr>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/WX20190905-145828@2x-1024x383.png"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/WX20190905-145828@2x-1024x383.png"></p>
 <p>爆炸效果 - 用到了噪音内容</p>
 <hr>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/07/GIF.gif"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/GIF.gif"></p>
 <hr>
-<p><img src="http://www.upcknox.com/wp-content/uploads/2019/09/DzxljVMXcAACt9w.png"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A9%E6%83%B3%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B0%8F%E7%8E%A9%E6%84%8F/DzxljVMXcAACt9w.png"></p>
 
       
 
