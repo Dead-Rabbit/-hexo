@@ -152,6 +152,184 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-unity-图片毛边问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/">Unity 图片毛边问题</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-09-08T08:50:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天要写一个火焰的效果，遇到了一个问题，当我制作其为像素画风格时，出现了格子问题，如下所示</p>
+<p><img src="/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164519.png"></p>
+<p>在查找问题的时候，发现原图片上传后，边缘出现了毛边的情况，此时材质的配置如下</p>
+<p><img src="/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164637.png"></p>
+<p>在查找是否为FilterMode问题的时候，看到了如下内容，同时记忆学习下</p>
+<p>以下内容来自 <strong><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f86700fbda7c">Unity UGUI 图片模糊</a></strong></p>
+<ul>
+<li>这里Texture Type默认格式为Texture。<br>这种纹理格式是3D物体最常用的纹理，不过UGUI需要修改为Sprite(2D and UI)。</li>
+<li>Sprite Mode保持默认Single</li>
+<li>如果要切割图片需要修改为Multiple，打开Sprite Editor面板，点击左上角的Slice，点击Slice按钮，默认的配 置会自动把图集切割成一张一张小图，切割适用于美工给的图片是一整图集。</li>
+<li>Packing Tag 打包图集名，相同Tag的图片会被打包成一张图</li>
+<li>Pixels Per Unit 每单位像素值，默认就好</li>
+<li>Pivot 中心点，一般是Center，根据需求修改</li>
+<li>Generate Mip Maps 把勾去掉，Mit Maps多级纹理，是逐步缩小图像版本的一个列表，远离相机的物体使用较小的纹理版本，这个对于UGUI来说没什么用处，还会造成图片模糊和多使用33％以上的内存。</li>
+<li>Filter Mode 纹理过滤模式保持默认Bilinar</li>
+<li>Point 点模式，纹理在近距离变成块状，UGUI分辨率缩小时，图片会边模糊</li>
+<li>Bilinear 双线性，纹理在近距离变模糊，UGUI下分辨率缩小时，模糊效果比Point好太多</li>
+<li>Trilinear 三线性，类似双线性，但纹理也在不同的mipmap层次之间变模糊，在UGUI中不适用</li>
+<li>Max Size 导入纹理的最大尺寸。美工往往更愿意使用巨大的纹理，用这个调整纹理降到合适的大小。</li>
+<li>Format 纹理格式</li>
+<li>Compressed 压缩，压缩RGB纹理，这是最常见的漫反射纹理格式。UGUI中大部分图片都使用这个格式。</li>
+<li>Truecolor 真彩色，这是最高的质量。通常透明度和颜色渐变的图片使用这个格式，这个格式消耗也大</li>
+</ul>
+<hr>
+<p>目前已通过修改材质的属性“解决”了问题，，修改TextureType为“Sprite”后貌似修复好了，仔细看还是有问题的：</p>
+<p><img src="/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/QQ%E6%88%AA%E5%9B%BE20190908164811.png"></p>
+<p>还是会存在部分描边情况，怀疑和程序有关</p>
+<p>Unity Package git 下载地址： <a target="_blank" rel="noopener" href="https://github.com/Dead-Rabbit/UnityFire">https://github.com/Dead-Rabbit/UnityFire</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/08/unity-%E5%9B%BE%E7%89%87%E6%AF%9B%E8%BE%B9%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-着色器记录-玻璃效果？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/06/%E7%9D%80%E8%89%B2%E5%99%A8%E8%AE%B0%E5%BD%95-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C%EF%BC%9F/">着色器记录 - “玻璃效果”？</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/06/%E7%9D%80%E8%89%B2%E5%99%A8%E8%AE%B0%E5%BD%95-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C%EF%BC%9F/" class="archive-article-date">
+  	<time datetime="2019-09-06T11:24:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/2019/09/06/%E7%9D%80%E8%89%B2%E5%99%A8%E8%AE%B0%E5%BD%95-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C%EF%BC%9F/glass_fire.gif"></p>
+<p>火焰效果</p>
+<p>在程序中，修改uv坐标为：</p>
+<p>i.uv.x = i.uv.x - (_Size - fmod(i.uv.x, _Size)) + _Size / 2;<br>i.uv.y = i.uv.y - (_Size - fmod(i.uv.y, _Size)) + _Size / 2;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/未分类//" class="article-tag-list-link color4">未分类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/06/%E7%9D%80%E8%89%B2%E5%99%A8%E8%AE%B0%E5%BD%95-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C%EF%BC%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-unity-深度纹理学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -767,181 +945,9 @@
 
 
   
-    <article id="post-shadertoy学习记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/26/shadertoy%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">ShaderToy学习记录</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/26/shadertoy%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2019-07-26T01:35:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=u5HAYVHsasc&amp;t=488s">https://www.youtube.com/watch?v=u5HAYVHsasc&amp;t=488s</a> Shadertoy for absolute beginners</li>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=PGtv-dBi2wE">https://www.youtube.com/watch?v=PGtv-dBi2wE</a> 3D ray marching</li>
-</ul>
-<p>[光线追踪介绍](<a target="_blank" rel="noopener" href="http://an/">http://An</a> Overview of the Ray-Tracing Rendering Technique)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/着色器//" class="article-tag-list-link color4">着色器</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/e7-9d-80-e8-89-b2-e5-99-a8//" class="article-tag-list-link color3">%e7%9d%80%e8%89%b2%e5%99%a8</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/e7-9d-80-e8-89-b2-e5-99-a8/ShaderToy//" class="article-tag-list-link color5">ShaderToy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/26/shadertoy%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-shadertoy-学习（一）圆形" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/25/shadertoy-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9C%86%E5%BD%A2/">ShaderToy 学习（一）圆形</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/25/shadertoy-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9C%86%E5%BD%A2/" class="archive-article-date">
-  	<time datetime="2019-07-25T03:18:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>学习自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/ssssssilver/article/details/81129441">Shader与ShaderToy学习 - 画一个圆</a></p>
-<p><img src="/2019/07/25/shadertoy-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9C%86%E5%BD%A2/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190725111453-1024x351.png"></p>
-<p><a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tXSDB"></a><a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tXSDB"></a><a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tXSDB">https://www.shadertoy.com/view/3tXSDB</a><a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tXSDB"></a></p>
-<p>//输入参数(当前点位置，中心点位置，点的半径，颜色，与背景过渡的平滑值)<br>vec4 cicle(vec2 pos,vec2 center,float radius,vec3 col,float antialias){<br>    //求圆心距离<br>    float d = length(pos - center) - radius;<br>    //smoothstep(a,b,t)函数 t&lt;a return a, t&gt;b return b<br>    float t = smoothstep(0.0, antialias, d);<br>    return vec4(col, 1.0-t);<br>}<br>void mainImage(out vec4 fragColor, in vec2 fragCoord )<br>{<br>    //获取点的位置<br>    //iResolution为屏幕的分辨率<br>    //fragCoord为当前点的位置 原点是左下角<br>    //返回的uv是以屏幕中心为原点<br>    vec2 uv =(2.0 * fragCoord.xy - iResolution.xy) / iResolution.y;<br>    //中心点<br>    vec2 point1 = vec2(0,0);<br>    //圆的颜色<br>    vec3 color=vec3(0.3,1,0);<br>    // layer1 cos函数<br>    vec3 temp = 0.5 + 0.5*cos(iTime+uv.xyx+vec3(0,2,4));<br>    vec4 layer1= vec4(temp,1);<br>    //layer2 平滑的圆<br>    vec4 layer2 = cicle(uv,point1,0.8,color,0.01);<br>    // 输出像素<br>    fragColor = mix(layer1, layer2, layer2.a);<br>}</p>
-<p>上面代码中，首先重点介绍一下 smoothstep 函数及其在当前例子中的应用。</p>
-<p>参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/u010333737/article/details/82859246">该博客</a> 的图可知，<strong>当d小于0.0时，返回0；大于antialias时，返回1；在两者之间时，返回一个过渡平滑的值；</strong>在本例中，d指的是，该点与中心点的距离 减去 圆的半径，所以smoothstep可以用来平滑分界线，如果不想平滑的话，可以使用step方法来直接确定颜色值。</p>
-<p>mix为线性插值，第三个参数为插值的比例</p>
-<p>其中关于变量的解释：</p>
-<p>// 屏幕的尺寸<br>#define iResolution _ScreenParams<br>// 屏幕中的坐标，以pixel为单位<br>#define gl_FragCoord ((_iParam.srcPos.xy/_iParam.srcPos.w)*_ScreenParams.xy) </p>
-<blockquote>
-<p>难懂的是gl_FragCoord的定义。(_iParam.srcPos.xy/_iParam.srcPos.w)将得到在屏幕中归一化后的屏幕位置，即返回分量范围在(0, 1)的屏幕横纵坐标值。屏幕的左下角值为(0, 0)，右上角值为(1, 1)。然后再乘以屏幕的长款像素值，就得到了该fragment对应的屏幕像素位置。这是我们后面计算的基础。</p>
-<p>作者：妈妈说女孩子要自立自强<br>来源：CSDN<br>原文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/candycat1992/article/details/44244549">https://blog.csdn.net/candycat1992/article/details/44244549</a></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/着色器//" class="article-tag-list-link color4">着色器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/25/shadertoy-%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%9C%86%E5%BD%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
